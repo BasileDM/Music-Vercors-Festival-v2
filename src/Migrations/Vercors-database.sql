@@ -78,45 +78,45 @@ CREATE TABLE vercors_extras(
 
 
 #------------------------------------------------------------
-# Table: Reservation_pass
+# Table: vercors_relation_reservation_pass
 #------------------------------------------------------------
 
-CREATE TABLE RESERVATION_PASS(
+CREATE TABLE VERCORS_RELATION_RESERVATION_PASS(
         ID             Int NOT NULL ,
         ID_RESERVATION Int NOT NULL ,
         JOUR           Date NOT NULL
-	,CONSTRAINT PK_RESERVATION_PASS PRIMARY KEY (ID,ID_RESERVATION)
+	,CONSTRAINT PK_VERCORS_RELATION_RESERVATION_PASS PRIMARY KEY (ID,ID_RESERVATION)
 
-	,CONSTRAINT FK_RESERVATION_PASS_vercors_pass FOREIGN KEY (ID) REFERENCES vercors_pass(ID)
-	,CONSTRAINT FK_RESERVATION_PASS_vercors_reservations0 FOREIGN KEY (ID_RESERVATION) REFERENCES vercors_reservations(ID)
+	,CONSTRAINT FK_VERCORS_RELATION_RESERVATION_PASS_vercors_pass FOREIGN KEY (ID) REFERENCES vercors_pass(ID)
+	,CONSTRAINT FK_VERCORS_RELATION_RESERVATION_PASS_vercors_reservations0 FOREIGN KEY (ID_RESERVATION) REFERENCES vercors_reservations(ID)
 )ENGINE=InnoDB;
 
 
 #------------------------------------------------------------
-# Table: Reservation_nuitee
+# Table: vercors_relation_reservation_nuitee
 #------------------------------------------------------------
 
-CREATE TABLE RESERVATION_NUITEE(
+CREATE TABLE VERCORS_RELATION_RESERVATION_NUITEE(
         ID             Int NOT NULL ,
         ID_RESERVATION Int NOT NULL ,
         JOUR           Date NOT NULL
-	,CONSTRAINT PK_RESERVATION_NUITEE PRIMARY KEY (ID,ID_RESERVATION)
+	,CONSTRAINT PK_VERCORS_RELATION_RESERVATION_NUITEE PRIMARY KEY (ID,ID_RESERVATION)
 
-	,CONSTRAINT FK_RESERVATION_NUITEE_vercors_nuitees FOREIGN KEY (ID) REFERENCES vercors_nuitees(ID)
-	,CONSTRAINT FK_RESERVATION_NUITEE_vercors_reservations0 FOREIGN KEY (ID_RESERVATION) REFERENCES vercors_reservations(ID)
+	,CONSTRAINT FK_VERCORS_RELATION_RESERVATION_NUITEE_vercors_nuitees FOREIGN KEY (ID) REFERENCES vercors_nuitees(ID)
+	,CONSTRAINT FK_VERCORS_RELATION_RESERVATION_NUITEE_vercors_reservations0 FOREIGN KEY (ID_RESERVATION) REFERENCES vercors_reservations(ID)
 )ENGINE=InnoDB;
 
 
 #------------------------------------------------------------
-# Table: Reservation_extras
+# Table: vercors_relation_reservation_extras
 #------------------------------------------------------------
 
-CREATE TABLE RESERVATION_EXTRAS(
+CREATE TABLE VERCORS_RELATION_RESERVATION_EXTRAS(
         ID             Int NOT NULL ,
         ID_RESERVATION Int NOT NULL
-	,CONSTRAINT PK_RESERVATION_EXTRAS PRIMARY KEY (ID,ID_RESERVATION)
+	,CONSTRAINT PK_VERCORS_RELATION_RESERVATION_EXTRAS PRIMARY KEY (ID,ID_RESERVATION)
 
-	,CONSTRAINT FK_RESERVATION_EXTRAS_vercors_extras FOREIGN KEY (ID) REFERENCES vercors_extras(ID)
-	,CONSTRAINT FK_RESERVATION_EXTRAS_vercors_reservations0 FOREIGN KEY (ID_RESERVATION) REFERENCES vercors_reservations(ID)
+	,CONSTRAINT FK_VERCORS_RELATION_RESERVATION_EXTRAS_vercors_extras FOREIGN KEY (ID) REFERENCES vercors_extras(ID)
+	,CONSTRAINT FK_VERCORS_RELATION_RESERVATION_EXTRAS_vercors_reservations0 FOREIGN KEY (ID_RESERVATION) REFERENCES vercors_reservations(ID)
 )ENGINE=InnoDB;
 
