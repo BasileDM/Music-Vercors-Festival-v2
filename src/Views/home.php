@@ -1,5 +1,12 @@
 <?php
+
+use src\Models\User;
+
 include __DIR__ . '/includes/header.php';
+
+$prop1 = ["A" => "b"];
+$newUser = new User($prop1);
+var_dump($newUser);
 ?>
 
 <body>

@@ -2,18 +2,16 @@
 
 namespace src\Models;
 
+use src\Services\Hydration;
+
 class Reservation {
-    private $id;
-    private $nombreReservation;
-    private $prixTotal;
-    private $idUtilisateur;
+    private int $id;
+    private int $nombreReservation;
+    private int $prixTotal;
+    private int $idUtilisateur;
 
 
-public function __construct($id, $nombreReservation, $prixTotal){
-    $this->id = $id;
-    $this->nombreReservation = $nombreReservation;
-    $this->prixTotal = $prixTotal;
-}
+use Hydration;
 
 public function getId(){
     return $this->id; 

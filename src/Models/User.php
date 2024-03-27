@@ -1,28 +1,21 @@
 <?php
 namespace src\Models;
 
-class User {
-    private $id;
-    private $nom;
-    private $prenom;
-    private $telephone;
-    private $adresse;
-    private $password;
-    private $role;
-    private $RGPD;
-    private $email;
+use DateTime;
+use src\Services\Hydration;
 
-public function __construct($id, $nom, $prenom, $telephone, $adresse, $password, $role, $RGPD, $email){
-    $this->id = $id;
-    $this->nom = $nom;
-    $this->prenom = $prenom;
-    $this->telephone = $telephone;
-    $this->adresse = $adresse;
-    $this->password = $password;
-    $this->role = $role;
-    $this->RGPD = $RGPD;
-    $this->email = $email;
-}
+final class User {
+    private int $id;
+    private string $nom;
+    private string $prenom;
+    private string $telephone;
+    private string $adresse;
+    private string $password;
+    private string $role;
+    private DateTime $RGPD;
+    private string $email;
+
+use Hydration;
 
 public function getId(){
     return $this->id;
