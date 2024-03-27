@@ -6,9 +6,9 @@ final class Database {
     private $db;
     private $config;
     public function __construct() {
-
         $this->config = __DIR__ . '/../../config.php';
         require_once $this->config;
+        $this->connect();
     }
 
     public function connect() {
@@ -20,6 +20,7 @@ final class Database {
             die();
         }
     }
+
     public function init(){
         if($this->doesUserTableExists()){
             $this->updateConfig();
@@ -61,9 +62,9 @@ final class Database {
     }
 
     public function doesUserTableExists(){
-        $sql = "SHOW TABLES LIKE" . PREFIXE ."utilisateurs";
-        $return = $this->db->query($sql)->fetchAll(\PDO::FETCH_OBJ);
-        if ($return && $return[0]->{'Tables_in_vercors (vercors_utilisateurs)'} == "vercors_utilisateurs") {
+        $sql = "SHOW TABLES LIKE '" . PREFIXE ."utilisateurs'";
+        $return = $this->db->query($sql)->fetch();
+        if ($return && $return[0] == PREFIXE."utilisateurs") {
             return true;
         } else {
             return false;
