@@ -6,6 +6,7 @@ class Reservation {
     private $id;
     private $nombreReservation;
     private $prixTotal;
+    private $idUtilisateur;
 
 
 public function __construct($id, $nombreReservation, $prixTotal){
@@ -28,5 +29,12 @@ public function getPrixTotal(){
 }
 public function setPrixTotal($prixTotal){
     $this->prixTotal = $prixTotal;
+}
+
+public function getIdUtilisateur(){
+    return $this->idUtilisateur;
+}
+public function setIdUtilisateur($idUtilisateur){
+    $this->idUtilisateur = $idUtilisateur;
 }
 }
