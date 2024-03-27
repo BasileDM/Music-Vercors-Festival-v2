@@ -1,0 +1,191 @@
+body {
+    background-image:url('images/1a669234843a563b2b6b977034b409f684fbad0c.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: "PT Sans Narrow", sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+@keyframes animation{
+    0% {
+      transform: scale(0.25);
+    }
+    100% {
+      transform: scale(1);
+    }
+}
+
+header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    .bouton {
+        margin: 5%;
+    }
+}
+
+#logo {
+    width: 30%;
+    height: 30%;
+}
+
+#connexion {
+    height: 40px;
+    width: 105px;
+    font-size: 20px;
+}
+
+label, p {
+    font-weight: 400;
+    font-style: normal;
+    font-size: 18px;
+  }
+
+p {
+    font-style: italic;
+}
+
+label {
+    margin: 15px 29px 0 0;
+}
+  
+h3, h4 {
+    font-weight: 500;
+    font-style: normal;
+    font-size: 22px;
+  }  
+
+legend {
+    margin: -30px;
+    position:absolute;
+    font-size: x-large;
+    font-weight: 600;
+}
+
+fieldset {
+    border: 0;
+    border-radius: 8px;
+    margin: 2% 7%;
+    background-color: white;
+    padding: 5%;
+    animation: 1.7s ease-in animation;
+}
+
+#coordonnees {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+input[type="text"], input[type="email"] {
+    width: 60%;
+}
+
+input[type="checkbox"] {
+    accent-color: black;
+}
+
+input[type="submit"] {
+    margin: 15px 0 0 0;
+    font-family: "PT Sans Narrow", sans-serif;
+    font-size: 30px;
+    background-color: white;
+}
+
+input[type="radio"] {
+    accent-color: black;
+}
+
+
+#pass1jourDate {
+    display: none;
+}
+
+#pass2joursDate {
+    display: none;
+}
+
+#sectiontarifReduit {
+    display: none;
+}
+
+.messageError {
+    display: block;
+    color: red !important;
+}
+
+
+.bouton {
+  align-items: center;
+  background-color: white;
+  border: 1.5px solid #111;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #111;
+  cursor: pointer;
+  font-size: 16px;
+  font-style: normal;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  line-height: 24px;
+  width: 15%;
+  padding: 0 25px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  touch-action: manipulation;
+  font-weight: 700;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.bouton:after {
+  background-color: #111;
+  border-radius: 8px;
+  content: "";
+  display: block;
+  height: 40px;
+  left: 0;
+  width: 100%;
+  position: absolute;
+  top: -2px;
+  transform: translate(8px, 8px);
+  transition: transform .2s ease-out;
+  z-index: -1;
+}
+
+.bouton:hover:after {
+  transform: translate(0, 0);
+}
+
+.bouton:active {
+  background-color: white;
+  color:#111;
+  outline: 0;
+}
+
+.bouton:hover {
+  outline: 0;
+}
+
+#loginForm {
+    margin-left: 5%;
+}
+
+#receipt {
+    margin-left: 5%;
+    background-color: white;
+    border-radius: 8px;
+    padding: 1em;
+    max-width: 40%;
+    margin-left: 15%;
+}

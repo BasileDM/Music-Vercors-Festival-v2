@@ -1,0 +1,115 @@
+#dashboard-container {
+    display: flex;
+    flex-direction: row;
+    height: max-content;
+    gap: 10%;
+    font-size: larger;
+    margin: 5% 0 0 0;
+}
+
+#colonne {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(81, 158, 161);
+    width: 16em;
+    border: 1px solid black;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    height: 100vh;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+
+    h2 {
+        width: 100%;
+        text-align: center;
+    }
+    ul {
+        width: 90%;
+        padding-inline-start: 0;
+        text-align: center;
+        font-size: 1.2em;
+    }
+
+    li {
+        list-style: none;
+        margin: 5%;
+
+        &:hover {
+            background-color: tomato;
+            border-radius: 10px;
+            transition: 0.5s;
+            cursor: pointer;
+
+        }
+        &::before {
+            margin-right: 0.5em;
+        }
+    }
+
+    #compte-item::before { 
+        content: '👤';
+        
+    }
+
+    #reservations-item::before {
+        content: '📅';
+    }
+
+    .actif {
+        background-color: tomato;
+        border-radius: 10px;
+    }
+}
+
+#reservations-section, #account-section {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background-color: rgba(81, 158, 161, 0.518);
+    border-radius: 15px;
+    border: 1px solid black;
+    margin: 0 0.5em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    backdrop-filter: blur(10px) ;
+    
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+}
+
+.reservation-card {
+    text-align: left;
+    background-color: #ffffff;
+    border: 1px solid black;
+    border-radius: 15px;
+    margin: 0.5em 0.5em 0.5em 0.5em;
+    padding: 1em;
+    display: flex;
+    flex : 1;
+    flex-wrap: wrap;
+    min-width: 20em;
+    max-width: 23%;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+
+    h3 {
+        width: 100%;
+        flex : 100%;
+        margin: 0;
+        border-bottom: 1px solid black;
+        color: tomato;
+    }
+
+    p {
+        font-style: normal;
+        margin: 0;
+    }
+}
+
+.reservation-column {
+    flex : 0.5;
+}
+
+#dashboard_message {
+    font-size: x-large;
+    font-style: normal;
+}
