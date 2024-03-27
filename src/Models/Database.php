@@ -11,6 +11,20 @@ final class Database {
         $this->connect();
     }
 
+    public function getDb() {
+        return $this->db;
+    }
+    public function setDb($db) {
+        $this->db = $db;
+    }
+
+    public function getConfig() {
+        return $this->config;
+    }
+    public function setConfig($config) {
+        $this->config = $config;
+    }
+
     public function connect() {
         try {
             $dsn = "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME;
