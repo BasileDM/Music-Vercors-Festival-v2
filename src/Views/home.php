@@ -8,7 +8,7 @@ include("./includes/header.php");
       <legend>Réservation</legend>
       <h3>Nombre de réservation(s) :</h3>
       <input type="number" name="nombrePlaces" id="NombrePlaces" value="1" required>
-      <?php if($errorCode === 1) { ?>
+      <?php if(isset($errorCode) && $errorCode === 1) { ?>
       <div class= "messageError">Le nombre de places n'est pas valide.</div>
     <?php } ?>
       <h3>Réservation(s) en tarif réduit</h3>
@@ -99,7 +99,7 @@ include("./includes/header.php");
         <h4>Voulez-vous louer un casque antibruit pour enfants* (2€ / casque) ?</h4>
         <label for="nombreCasquesEnfants">Nombre de casques souhaités :</label>
         <input type="number" name="nombreCasquesEnfants" id="nombreCasquesEnfants" value= '0'>
-        <?php if($errorCode === 2) { ?>
+        <?php if(isset($errorCode) && $errorCode === 2) { ?>
           <div class= "messageError">Ajouter le nombre de casques.</div>
     <?php } ?>
         <p>*Dans la limite des stocks disponibles.</p>
@@ -122,17 +122,17 @@ include("./includes/header.php");
       <label for="email">Email :</label>
       <input type="email" name="email" id="email" required>
       <br>
-      <?php if($errorCode === 4) { ?>
+      <?php if(isset($errorCode) && $errorCode === 4) { ?>
           <div class= "message error">Saiser l'adresse mail.</div>
     <?php } ?>
       <label for="telephone">Téléphone :</label>
       <input type="text" name="telephone" id="telephone" required>
-      <?php if($errorCode === 5) { ?>
+      <?php if(isset($errorCode) && $errorCode === 5) { ?>
           <div class= "messageError">.</div>
     <?php } ?>
       <label for="adressePostale">Adresse Postale :</label>
       <input type="text" name="adressePostale" id="adressePostale" required>
-      <?php if($errorCode === 6) { ?>
+      <?php if(isset($errorCode) && $errorCode === 6) { ?>
           <div class= "messageError">Ajouter adresse postale.</div>
     <?php } ?>
       <input type="submit" name="soumission" class="bouton" value="Réserver" id="submitButton">
