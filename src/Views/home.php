@@ -1,5 +1,12 @@
 <?php
+
+use src\Models\User;
+
 include __DIR__ . '/includes/header.php';
+
+// $prop1 = ['nom' => 'tomorrow mine nuts result since road species does mice toward ruler slow wheel jar smallest butter history split well copper usually torn motor month'];
+// $newUser = new User($prop1);
+// var_dump($newUser);
 ?>
 
 <body>

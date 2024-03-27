@@ -21,15 +21,15 @@ final class Database {
         }
     }
 
-    public function init(){
-        if($this->doesUserTableExists()){
+    public function init() {
+        if ($this->doesUserTableExists()) {
             $this->updateConfig();
             return "Database already exists.";
         }
         try {
             $sql = file_get_contents(__DIR__ . "/../Migrations/Vercors-database.sql");
             $this->db->query($sql);
-            if ($this->updateConfig()){
+            if ($this->updateConfig()) {
                 return true;
             } else {
                 return false;
@@ -39,7 +39,7 @@ final class Database {
         }
     }
 
-    public function updateConfig(){
+    public function updateConfig() {
         $configFile = fopen($this->config, "w");
         $content = "<?php
 
@@ -52,7 +52,7 @@ final class Database {
         define('HOME_URL', '/');
         
         define('DB_INITIALIZED', TRUE);";
-    
+
         if (fwrite($configFile, $content)) {
             fclose($configFile);
             return true;
@@ -61,14 +61,13 @@ final class Database {
         }
     }
 
-    public function doesUserTableExists(){
-        $sql = "SHOW TABLES LIKE '" . PREFIXE ."utilisateurs'";
+    public function doesUserTableExists() {
+        $sql = "SHOW TABLES LIKE '" . PREFIXE . "utilisateurs'";
         $return = $this->db->query($sql)->fetch();
-        if ($return && $return[0] == PREFIXE."utilisateurs") {
+        if ($return && $return[0] == PREFIXE . "utilisateurs") {
             return true;
         } else {
             return false;
         }
     }
-
 }
