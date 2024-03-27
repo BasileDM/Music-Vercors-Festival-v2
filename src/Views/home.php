@@ -1,5 +1,5 @@
 <?php
-include("./includes/header.php");
+include __DIR__ . '/includes/header.php';
 ?>
 
 <body>
@@ -140,5 +140,5 @@ include("./includes/header.php");
   </form>
 
 <?php
-include("./includes/footer.php");
+include __DIR__ . '/includes/footer.php';
 ?>
