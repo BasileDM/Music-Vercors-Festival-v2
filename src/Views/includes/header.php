@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Vercors Music Festival</title>
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/dashboard.css">
     <script src="./assets/js/section-display.js" defer></script>
@@ -13,20 +13,20 @@
 
 <body>
     <header>
-        <img src="./assets/img/vercorsLogo.png" id="logo" alt="Vercors_Music_Festival_Logo" onclick="location.href='./index.php'">
+        <img src="./assets/img/vercorsLogo.png" id="logo" alt="Vercors_Music_Festival_Logo" onclick="location.href='./'">
 
         <?php
         if (isset($_SESSION['connected']) && $_SESSION['connected'] === true) {
         ?>
             <div id='dashboard' class="bouton">
-                <a href="./dashboard.php">Tableau de bord</a>
+                <a href="/dashboard">Tableau de bord</a>
             </div>
             <div id='deconnexion' class="bouton">
-                <a href="./src/deconnexion.php">Deconnexion</a>
+                <a href="./logout">Deconnexion</a>
             </div>
         <?php } else { ?>
             <div id='connexion' class="bouton">
-                <a href="./login">Connexion</a>
+                <a href="/login">Connexion</a>
             </div>
         <?php } ?>
     </header>
