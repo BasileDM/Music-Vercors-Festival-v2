@@ -1,12 +1,5 @@
 <?php
-
-use src\Models\User;
-
-include __DIR__ . '/includes/header.php';
-
-// $prop1 = ['nom' => 'tomorrow mine nuts result since road species does mice toward ruler slow wheel jar smallest butter history split well copper usually torn motor month'];
-// $newUser = new User($prop1);
-// var_dump($newUser);
+  include __DIR__ . '/includes/header.php';
 ?>
 
 <body>
@@ -15,9 +8,9 @@ include __DIR__ . '/includes/header.php';
       <legend>Réservation</legend>
       <h3>Nombre de réservation(s) :</h3>
       <input type="number" name="nombrePlaces" id="NombrePlaces" value="1" required>
-      <?php if(isset($errorCode) && $errorCode === 1) { ?>
-      <div class= "messageError">Le nombre de places n'est pas valide.</div>
-    <?php } ?>
+      <?php if (isset($errorCode) && $errorCode === 1) { ?>
+        <div class="messageError">Le nombre de places n'est pas valide.</div>
+      <?php } ?>
       <h3>Réservation(s) en tarif réduit</h3>
       <input type="checkbox" name="tarifReduit" id="tarifReduit" onclick="afficherTarifReduit()">
       <label for="tarifReduit">Ma réservation sera en tarif réduit</label>
@@ -105,10 +98,10 @@ include __DIR__ . '/includes/header.php';
       <section id="casques">
         <h4>Voulez-vous louer un casque antibruit pour enfants* (2€ / casque) ?</h4>
         <label for="nombreCasquesEnfants">Nombre de casques souhaités :</label>
-        <input type="number" name="nombreCasquesEnfants" id="nombreCasquesEnfants" value= '0'>
-        <?php if(isset($errorCode) && $errorCode === 2) { ?>
-          <div class= "messageError">Ajouter le nombre de casques.</div>
-    <?php } ?>
+        <input type="number" name="nombreCasquesEnfants" id="nombreCasquesEnfants" value='0'>
+        <?php if (isset($errorCode) && $errorCode === 2) { ?>
+          <div class="messageError">Ajouter le nombre de casques.</div>
+        <?php } ?>
         <p>*Dans la limite des stocks disponibles.</p>
       </section>
 
@@ -129,23 +122,23 @@ include __DIR__ . '/includes/header.php';
       <label for="email">Email :</label>
       <input type="email" name="email" id="email" required>
       <br>
-      <?php if(isset($errorCode) && $errorCode === 4) { ?>
-          <div class= "message error">Saiser l'adresse mail.</div>
-    <?php } ?>
+      <?php if (isset($errorCode) && $errorCode === 4) { ?>
+        <div class="message error">Saiser l'adresse mail.</div>
+      <?php } ?>
       <label for="telephone">Téléphone :</label>
       <input type="text" name="telephone" id="telephone" required>
-      <?php if(isset($errorCode) && $errorCode === 5) { ?>
-          <div class= "messageError">.</div>
-    <?php } ?>
+      <?php if (isset($errorCode) && $errorCode === 5) { ?>
+        <div class="messageError">.</div>
+      <?php } ?>
       <label for="adressePostale">Adresse Postale :</label>
       <input type="text" name="adressePostale" id="adressePostale" required>
-      <?php if(isset($errorCode) && $errorCode === 6) { ?>
-          <div class= "messageError">Ajouter adresse postale.</div>
-    <?php } ?>
+      <?php if (isset($errorCode) && $errorCode === 6) { ?>
+        <div class="messageError">Ajouter adresse postale.</div>
+      <?php } ?>
       <input type="submit" name="soumission" class="bouton" value="Réserver" id="submitButton">
     </fieldset>
   </form>
 
 <?php
-include __DIR__ . '/includes/footer.php';
+  include __DIR__ . '/includes/footer.php';
 ?>

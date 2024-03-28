@@ -16,7 +16,7 @@
         <img src="./assets/img/vercorsLogo.png" id="logo" alt="Vercors_Music_Festival_Logo" onclick="location.href='./index.php'">
 
         <?php
-        if (isset($_SESSION['connected'])) {
+        if (isset($_SESSION['connected']) && $_SESSION['connected'] === true) {
         ?>
             <div id='dashboard' class="bouton">
                 <a href="./dashboard.php">Tableau de bord</a>
