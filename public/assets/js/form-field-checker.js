@@ -208,38 +208,52 @@ if (!enfantsCheckboxOui.checked || !enfantsCheckboxNon.checked) {
 } else {
     validateField(enfantsNonLabel, false);
 }
-//Uncheck tentes if 3 days is selected
-tente3Nuits.onchange = () => {
-    tenteNuit1.checked = false;
-    tenteNuit2.checked = false;
-    tenteNuit3.checked = false;
-}
-tenteNuit1.onchange = () => {
-    tente3Nuits.checked = false;
-}
-tenteNuit2.onchange = () => {
-    tente3Nuits.checked = false;
-}
-tenteNuit3.onchange = () => {
-    tente3Nuits.checked = false;
-}
 
-//Uncheck vans if 3 days is selected
-van3Nuits.onchange = () => {
-    vanNuit1.checked = false;
-    vanNuit2.checked = false;
-    vanNuit3.checked = false;
-}
-vanNuit1.onchange = () => {
-    van3Nuits.checked = false;
-}
-vanNuit2.onchange = () => {
-    van3Nuits.checked = false;
-}
-vanNuit3.onchange = () => {
-    van3Nuits.checked = false;
-}
+//Cocher automatiquement "TENTE 3 NUITS" si les boutons des 3 nuits sont cochées
+function cocherTente3nuits() {
+    let tenteNuit1Checked = document.getElementById('tenteNuit1').checked;
+    let tenteNuit2Checked = document.getElementById('tenteNuit2').checked;
+    let tenteNuit3Checked = document.getElementById('tenteNuit3').checked;
+    let tente3NuitsButton = document.getElementById('tente3Nuits');
+  
+    if (tenteNuit1Checked && tenteNuit2Checked && tenteNuit3Checked) {
+      // Si les trois premiers sont cochés, cochez le bouton "tente3Nuits" et décochez les trois premiers
+      tente3NuitsButton.checked = true;
+      document.getElementById('tenteNuit1').checked = false;
+      document.getElementById('tenteNuit2').checked = false;
+      document.getElementById('tenteNuit3').checked = false;
+    }
+    //Si le bouton "tente3Nuits" est coché désactiver les options précédentes
+    if (tente3NuitsButton.checked && (tenteNuit1.checked || tenteNuit2.checked || tenteNuit3.checked)) {
+      // Si c'est le cas, désélectionnez automatiquement les options précédentes
+      tenteNuit1.checked = false;
+      tenteNuit2.checked = false;
+      tenteNuit3.checked = false;
+    }
+  }
 
+  // Cocher automatiquement "VAN 3 NUITS" si les boutons des 3 nuits sont cochés
+function cocherVan3nuits() {
+    var vanNuit1Checked = document.getElementById('vanNuit1').checked;
+    var vanNuit2Checked = document.getElementById('vanNuit2').checked;
+    var vanNuit3Checked = document.getElementById('vanNuit3').checked;
+    var van3NuitsButton = document.getElementById('van3Nuits');
+  
+    if (vanNuit1Checked && vanNuit2Checked && vanNuit3Checked) {
+      // Si les trois premiers sont cochés, cochez le bouton "van3Nuits" et décochez les trois premiers
+      van3NuitsButton.checked = true;
+      document.getElementById('vanNuit1').checked = false;
+      document.getElementById('vanNuit2').checked = false;
+      document.getElementById('vanNuit3').checked = false;
+    }
+    //Si le bouton "van3Nuits" est coché désactiver les options précédentes
+    if (van3NuitsButton.checked && (vanNuit1.checked || vanNuit2.checked || vanNuit3.checked)) {
+      // Si c'est le cas, désélectionnez automatiquement les options précédentes
+      vanNuit1.checked = false;
+      vanNuit2.checked = false;
+      vanNuit3.checked = false;
+    }
+  }
 // Enfants
 enfantsCheckboxOui.onchange = () => {
     enfantsCheckboxOui.checked || enfantsCheckboxNon.checked
