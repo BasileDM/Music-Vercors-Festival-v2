@@ -82,7 +82,7 @@ fieldset {
     gap: 2px;
 }
 
-input[type="text"], input[type="email"] {
+input[type="text"], input[type="email"], input[type="password"] {
     width: 60%;
 }
 

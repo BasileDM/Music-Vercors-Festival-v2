@@ -123,7 +123,7 @@
       <input type="email" name="email" id="email" required>
       <br>
       <?php if (isset($errorCode) && $errorCode === 4) { ?>
-        <div class="message error">Saiser l'adresse mail.</div>
+        <div class="message error">Saisir l'adresse mail.</div>
       <?php } ?>
       <label for="telephone">Téléphone :</label>
       <input type="text" name="telephone" id="telephone" required>
@@ -135,6 +135,10 @@
       <?php if (isset($errorCode) && $errorCode === 6) { ?>
         <div class="messageError">Ajouter adresse postale.</div>
       <?php } ?>
+      <label for="password">Mot de passe :</label>
+    <input type="password" id="password" name="password" required>
+    <label for="password">Vérifier votre mot de passe :</label>
+    <input type="password" id="verifPassword" name="password" required>
       <input type="submit" name="soumission" class="bouton" value="Réserver" id="submitButton">
     </fieldset>
   </form>
