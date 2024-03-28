@@ -10,7 +10,6 @@ class Reservation {
     private int $prixTotal;
     private int $idUtilisateur;
 
-
 use Hydration;
 
 public function getId(){
