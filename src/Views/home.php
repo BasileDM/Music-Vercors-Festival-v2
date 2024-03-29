@@ -36,7 +36,6 @@
         <label for="choixJour1">Pass pour la journée du 01/07</label>
         <input type="radio" name="pass1jour" id="choixJour2" value="choixJour2">
         <label for="choixJour2">Pass pour la journée du 02/07</label>
-        <br>
         <input type="radio" name="pass1jour" id="choixJour3" value="choixJour3">
         <label for="choixJour3">Pass pour la journée du 03/07</label>
       </section>
@@ -63,31 +62,25 @@
     <fieldset id="options">
       <legend>Options</legend>
       <h3>Réserver un emplacement de tente : </h3>
-      <input type="radio" id="tenteNuit1" name="emplacementTente" value="choixNuit1">
+      <input type="checkbox" id="tenteNuit1" name="emplacementTente" value="choixNuit1" onchange="cocherTente3nuits()">
       <label for="tenteNuit1">Pour la nuit du 01/07 (5€)</label>
-      <input type="radio" id="tenteNuit2" name="emplacementTente" value="choixNuit2">
+      <input type="checkbox" id="tenteNuit2" name="emplacementTente" value="choixNuit2" onchange="cocherTente3nuits()">
       <label for="tenteNuit2">Pour la nuit du 02/07 (5€)</label>
-      <input type="radio" id="tenteNuit3" name="emplacementTente" value="choixNuit3">
+      <input type="checkbox" id="tenteNuit3" name="emplacementTente" value="choixNuit3" onchange="cocherTente3nuits()">
       <label for="tenteNuit3">Pour la nuit du 03/07 (5€)</label>
-      <input type="radio" id="tenteNuits12" name="emplacementTente" value="choixNuits12">
-      <label for="tenteNuits12">Pour les nuits du 01 et 02/07 (5€)</label>
-      <input type="radio" id="tenteNuits23" name="emplacementTente" value="choixNuits23">
-      <label for="tenteNuits23">Pour les nuits du 02 et 03/07 (5€)</label>
-      <input type="radio" id="tente3Nuits" name="emplacementTente" value="choix3Nuits">
+      <br>
+      <input type="checkbox" id="tente3Nuits" name="emplacementTente" value="choix3Nuits" onchange="cocherTente3nuits()">
       <label for="tente3Nuits">Pour les 3 nuits (12€)</label>
 
       <h3>Réserver un emplacement de camion aménagé : </h3>
-      <input type="radio" id="vanNuit1" name="emplacementVan" value="choixVanNuit1">
+      <input type="checkbox" id="vanNuit1" name="emplacementVan" value="choixVanNuit1" onchange="cocherVan3nuits()">
       <label for="vanNuit1">Pour la nuit du 01/07 (5€)</label>
-      <input type="radio" id="vanNuit2" name="emplacementVan" value="choixVanNuit2">
+      <input type="checkbox" id="vanNuit2" name="emplacementVan" value="choixVanNuit2" onchange="cocherVan3nuits()">
       <label for="vanNuit2">Pour la nuit du 02/07 (5€)</label>
-      <input type="radio" id="vanNuit3" name="emplacementVan" value="choixVanNuit3">
+      <input type="checkbox" id="vanNuit3" name="emplacementVan" value="choixVanNuit3" onchange="cocherVan3nuits()">
       <label for="vanNuit3">Pour la nuit du 03/07 (5€)</label>
-      <input type="radio" id="vanNuits12" name="emplacementVan" value="choixVanNuits12">
-      <label for="vanNuits12">Pour les nuits du 01 et 02/07 (5€)</label>
-      <input type="radio" id="vanNuits23" name="emplacementVan" value="choixVanNuits23">
-      <label for="vanNuits23">Pour les nuits du 02 et 03/07 (5€)</label>
-      <input type="radio" id="van3Nuits" name="emplacementVan" value="choixVan3Nuits">
+      <br>
+      <input type="checkbox" id="van3Nuits" name="emplacementVan" value="choixVan3Nuits" onchange="cocherVan3nuits()">
       <label for="van3Nuits">Pour les 3 nuits (12€)</label>
 
       <h3>Venez-vous avec des enfants ?</h3>
@@ -139,6 +132,8 @@
     <input type="password" id="password" name="password" required>
     <label for="password">Vérifier votre mot de passe :</label>
     <input type="password" id="verifPassword" name="password" required>
+    <label for="CGU">J'accepte les conditions générales d'utilisation</label>
+    <input id="CGU" name="CGU" type="checkbox">
       <input type="submit" name="soumission" class="bouton" value="Réserver" id="submitButton">
     </fieldset>
   </form>
