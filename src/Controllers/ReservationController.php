@@ -66,8 +66,8 @@ final class ReservationController {
       $newReservation->setIdUtilisateur($_SESSION['userId']);
     }
     $resaRepo = new ReservationRepository();
-    $resaRepo->create($newReservation);
-    header('Location: '.HOME_URL.'receipt');
+    $newReservationID = $resaRepo->create($newReservation);
+    header('Location: '.HOME_URL.'receipt?id='.$newReservationID);
   }
 
   public function calculateTotalPrice() {

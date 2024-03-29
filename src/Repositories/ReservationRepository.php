@@ -169,6 +169,8 @@ class ReservationRepository {
             'ID_PASS' => $passId,
             'JOUR' => $passDate
         ]);
+
+        return $lastReservationId;
     }
 
     public function getAll() {
