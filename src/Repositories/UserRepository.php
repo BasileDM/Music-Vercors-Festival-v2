@@ -26,6 +26,7 @@ class UserRepository {
     $sql = "INSERT INTO " . PREFIXE . "utilisateurs (NOM, PRENOM, TELEPHONE, ADRESSE, PASSWORD, ROLE, RGPD, MAIL) 
     VALUES (:nom, :prenom, :telephone, :adresse, :password, :role, :rgpd, :mail)";
     $statement = $this->db->prepare($sql);
+    // die();
     $statement->execute([
       'nom' => $newUser->getNom(),
       'prenom' => $newUser->getPrenom(),
@@ -37,5 +38,13 @@ class UserRepository {
       'mail' => $newUser->getEmail()
     ]);
     return $this->db->lastInsertId();
+  }
+
+  public function getByMail($mail) {
+    $sql = "SELECT * FROM " . PREFIXE . "utilisateurs WHERE MAIL = :mail";
+    $statement = $this->db->prepare($sql);
+    $statement->execute(['mail' => $mail]);
+    $user = $statement->fetch(PDO::FETCH_OBJ);
+    return $user;
   }
 }

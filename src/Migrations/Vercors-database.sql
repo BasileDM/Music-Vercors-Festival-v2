@@ -21,6 +21,9 @@ CREATE TABLE vercors_utilisateurs(
 	,CONSTRAINT PK_vercors_utilisateurs PRIMARY KEY (ID)
 )ENGINE=InnoDB;
 
+INSERT INTO `vercors_utilisateurs` (`ID`, `NOM`, `PRENOM`, `TELEPHONE`, `ADRESSE`, `PASSWORD`, `ROLE`, `RGPD`, `MAIL`) VALUES
+(1, 'admin', 'admin', '0606060606', '5 admin rue admin', '$2y$10$G9jHKu477jlO2agttc.XPOv6tWcaiB9hB7pxNDsLRQPeq0ecCL7Yy', 'admin', '2020-01-01', 'admin@admin.admin');
+
 
 #------------------------------------------------------------
 # Table: Reservation
@@ -48,7 +51,10 @@ CREATE TABLE vercors_pass(
 	,CONSTRAINT AK_vercors_pass UNIQUE (NOM)
 	,CONSTRAINT PK_vercors_pass PRIMARY KEY (ID)
 )ENGINE=InnoDB;
-
+INSERT INTO `vercors_pass` (`ID`, `PRIX`, `NOM`) VALUES
+(1, 4000, 'pass1jours'),
+(2, 7000, 'pass2jours'),
+(3, 10000, 'pass3jours');
 
 #------------------------------------------------------------
 # Table: Nuitee
@@ -61,6 +67,11 @@ CREATE TABLE vercors_nuitees(
 	,CONSTRAINT AK_vercors_nuitees UNIQUE (NOM)
 	,CONSTRAINT PK_vercors_nuitees PRIMARY KEY (ID)
 )ENGINE=InnoDB;
+INSERT INTO `vercors_nuitees` (`ID`, `PRIX`, `NOM`) VALUES
+(1, 500, 'tenteUneNuit'),
+(2, 1200, 'tenteTroisNuits'),
+(3, 500, 'vanUneNuit'),
+(4, 1200, 'vanTroisNuits');
 
 
 #------------------------------------------------------------
@@ -75,6 +86,9 @@ CREATE TABLE vercors_extras(
 	,CONSTRAINT AK_vercors_extras UNIQUE (NOM)
 	,CONSTRAINT PK_vercors_extras PRIMARY KEY (ID)
 )ENGINE=InnoDB;
+INSERT INTO `vercors_extras` (`ID`, `STOCK`, `PRIX`, `NOM`) VALUES
+(1, 42, 200, 'casques'),
+(2, 9999, 500, 'luges');
 
 
 #------------------------------------------------------------

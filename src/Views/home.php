@@ -3,6 +3,11 @@
 ?>
 
 <body>
+  <?php if (isset($_GET['error']) && $_GET['error'] === 101) {?>
+    <div class="messageError">Une erreur est survenue lors de l'initialisation de la base de données.</div>
+  <?php } else if (isset($_GET['success']) && $_GET['success'] === 101) { ?>
+    <div class="messageSuccess">La base de données a été correctement initialisée.</div>
+  <?php } ?>
   <form onsubmit="return finalCheck(event)" action="#" id="inscription" method="POST">
     <fieldset id="reservation">
       <legend>Réservation</legend>

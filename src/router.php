@@ -21,7 +21,7 @@ switch ($route) {
                 $homeController->index();
             }
         } else if ($method === 'POST') {
-            $ReservationController->registerUser();
+            $ReservationController->registerReseversation();
         }
         
         break;
