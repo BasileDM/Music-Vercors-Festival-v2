@@ -1,22 +1,29 @@
 <?php
 
 use src\Controllers\HomeController;
+use src\Controllers\ReservationController;
 use src\Services\Auth;
 
 $route = $_SERVER['REQUEST_URI'];
 $method = $_SERVER['REQUEST_METHOD'];
 
 $homeController = new HomeController();
+$ReservationController = new ReservationController();
 
 switch ($route) {
 
     case HOME_URL:
-        if (Auth::isAuth()) {
-            header('Location: ' . HOME_URL . 'dashboard');
-            die();
-        } else {
-            $homeController->index();
+        if ($method === 'GET') {
+                if (Auth::isAuth()) {
+                header('Location: ' . HOME_URL . 'dashboard');
+                die();
+            } else {
+                $homeController->index();
+            }
+        } else if ($method === 'POST') {
+            $ReservationController->registerUser();
         }
+        
         break;
 
     case HOME_URL . 'dashboard':
@@ -33,7 +40,9 @@ switch ($route) {
         break;
 
     case HOME_URL . 'logout':
+        echo 'hello';
         Auth::logout();
+        echo 'hello';
         die();
         break;
 

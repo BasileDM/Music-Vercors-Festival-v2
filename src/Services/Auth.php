@@ -12,6 +12,7 @@ final class Auth {
   }
 
   public static function logout() {
+    var_dump($_SESSION);
     $_SESSION['connected'] = false;
     session_destroy();
     header('Location: ' . HOME_URL);
