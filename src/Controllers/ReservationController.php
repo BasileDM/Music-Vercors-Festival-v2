@@ -44,10 +44,10 @@ final class ReservationController {
     $newReservation->setPrixTotal($this->calculateTotalPrice());
     $newReservation->setPassSelection($_POST['passSelection']);
     if (isset($_POST['emplacementTente'])) {
-      $newReservation->setEmplacementTente($_POST['emplacementTente']);
+      $newReservation->setEmplacementTente(implode(',', $_POST['emplacementTente']));
     }
     if (isset($_POST['emplacementVan'])) {
-      $newReservation->setEmplacementVan($_POST['emplacementVan']);
+      $newReservation->setEmplacementVan(implode(',', $_POST['emplacementVan']));
     }
     $newReservation->setCasques($_POST['nombreCasquesEnfants']);
     $newReservation->setLuges($_POST['NombreLugesEte']);
@@ -65,7 +65,6 @@ final class ReservationController {
     } else if (isset($_SESSION['userId'])) {
       $newReservation->setIdUtilisateur($_SESSION['userId']);
     }
-    var_dump($newReservation->getCasques());
     $resaRepo = new ReservationRepository();
     $resaRepo->create($newReservation);
     die();

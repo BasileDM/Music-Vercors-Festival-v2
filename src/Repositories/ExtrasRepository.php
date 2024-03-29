@@ -1,4 +1,5 @@
 <?php
+
 namespace src\Repositories;
 
 use PDO;
@@ -19,12 +20,11 @@ class ExtrasRepository {
     return $this->db->query($sql)->fetchAll(PDO::FETCH_OBJ);
   }
 
-  public function getIdByName($name){
+  public function getIdByName($name) {
     $sql = "SELECT id FROM " . PREFIXE . "extras WHERE NOM = :name;";
     $stmt = $this->db->prepare($sql);
     $stmt->bindParam(':name', $name, PDO::PARAM_STR);
     $stmt->execute();
     return $stmt->fetchColumn();
-    
   }
 }

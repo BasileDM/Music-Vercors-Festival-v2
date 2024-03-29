@@ -54,7 +54,10 @@ CREATE TABLE vercors_pass(
 INSERT INTO `vercors_pass` (`ID`, `PRIX`, `NOM`) VALUES
 (1, 4000, 'pass1jours'),
 (2, 7000, 'pass2jours'),
-(3, 10000, 'pass3jours');
+(3, 10000, 'pass3jours'),
+(4, 2500, 'pass1jourreduit'),
+(5, 5000, 'pass2jourreduit'),
+(6, 6500, 'pass3jourreduit');
 
 #------------------------------------------------------------
 # Table: Nuitee
@@ -68,10 +71,14 @@ CREATE TABLE vercors_nuitees(
 	,CONSTRAINT PK_vercors_nuitees PRIMARY KEY (ID)
 )ENGINE=InnoDB;
 INSERT INTO `vercors_nuitees` (`ID`, `PRIX`, `NOM`) VALUES
-(1, 500, 'tenteUneNuit'),
-(2, 1200, 'tenteTroisNuits'),
-(3, 500, 'vanUneNuit'),
-(4, 1200, 'vanTroisNuits');
+(1, 500, 'tenteNuit1'),
+(2, 500, 'tenteNuit2'),
+(3, 500, 'tenteNuit3'),
+(4, 1200, 'tenteTroisNuits'),
+(5, 500, 'vanNuit1'),
+(6, 500, 'vanNuit2'),
+(7, 500, 'vanNuit3'),
+(8, 1200, 'vanTroisNuits');
 
 
 #------------------------------------------------------------
@@ -127,7 +134,8 @@ CREATE TABLE VERCORS_RELATION_RESERVATION_NUITEE(
 
 CREATE TABLE VERCORS_RELATION_RESERVATION_EXTRAS(
         ID_EXTRAS      Int NOT NULL ,
-        ID_RESERVATION Int NOT NULL
+        ID_RESERVATION Int NOT NULL,
+        QUANTITY       Int
 	,CONSTRAINT PK_VERCORS_RELATION_RESERVATION_EXTRAS PRIMARY KEY (ID_EXTRAS,ID_RESERVATION)
 
 	,CONSTRAINT FK_VERCORS_RELATION_RESERVATION_EXTRAS_vercors_extras FOREIGN KEY (ID_EXTRAS) REFERENCES vercors_extras(ID)
