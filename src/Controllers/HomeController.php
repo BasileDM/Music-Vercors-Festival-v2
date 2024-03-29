@@ -8,7 +8,9 @@ class HomeController {
     use Render;
 
     public function index() {
-        $this->render('home');
+        $succes = isset($_GET['succes']) ? $_GET['succes'] : null;
+        $error  = isset($_GET['error']) ? $_GET['error'] : null;
+        $this->render('home', ['error' => $error, 'succes' => $succes]);
     }
 
     public function dashboard() {
@@ -21,5 +23,9 @@ class HomeController {
     
     public function notFound() {
         $this->render('404');
+    }
+
+    public function receipt() {
+        $this->render('receipt');
     }
 }

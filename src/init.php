@@ -12,10 +12,12 @@ require_once __DIR__ . "/router.php";
 if (DB_INITIALIZED == FALSE) {
   $db = new Database();
   if ($db->init() == TRUE) {
-    header("Location: " . HOME_URL . "?success=101");
+    // header("Location: " . HOME_URL . "?success=101");
+    echo 'Database initialized';
     die();
   } else {
-    header("Location: " . HOME_URL . "?error=101");
+    // header("Location: " . HOME_URL . "?error=101");
+    echo 'Failed to initialize database';
     die();
   }
 }

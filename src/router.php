@@ -46,6 +46,10 @@ switch ($route) {
         die();
         break;
 
+    case HOME_URL . 'receipt':
+        $homeController->receipt();
+        break;
+
     default:
         $homeController->notFound();
         break;

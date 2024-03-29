@@ -65,9 +65,11 @@ final class ReservationController {
     } else if (isset($_SESSION['userId'])) {
       $newReservation->setIdUtilisateur($_SESSION['userId']);
     }
+    var_dump($newReservation->getCasques());
     $resaRepo = new ReservationRepository();
     $resaRepo->create($newReservation);
-    return 'success';
+    die();
+    header('Location: '.HOME_URL.'receipt');
   }
 
   public function calculateTotalPrice() {
