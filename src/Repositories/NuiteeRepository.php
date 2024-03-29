@@ -16,9 +16,6 @@ final class NuiteeRepository {
   }
 
   public function getIdByName($name) {
-    // switch ($name) {
-    //   cas 
-    // }
     $sql = "SELECT id FROM " . PREFIXE . "nuitees WHERE NOM = :name;";
     $stmt = $this->db->prepare($sql);
     $stmt->bindParam(':name', $name, PDO::PARAM_STR);

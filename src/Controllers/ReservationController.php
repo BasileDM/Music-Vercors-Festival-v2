@@ -67,7 +67,6 @@ final class ReservationController {
     }
     $resaRepo = new ReservationRepository();
     $resaRepo->create($newReservation);
-    die();
     header('Location: '.HOME_URL.'receipt');
   }
 
