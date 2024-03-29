@@ -40,7 +40,9 @@ switch ($route) {
         break;
 
     case HOME_URL . 'logout':
+        echo 'hello';
         Auth::logout();
+        echo 'hello';
         die();
         break;
 

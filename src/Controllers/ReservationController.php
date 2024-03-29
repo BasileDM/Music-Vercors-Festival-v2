@@ -23,7 +23,8 @@ final class ReservationController {
     var_dump($newUser);
 
     $userRepo = new UserRepository();
-    var_dump($userRepo->create($newUser));
+    $newUser->setId($userRepo->create($newUser));
+    var_dump($newUser);
 
     return;
   }
