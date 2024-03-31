@@ -7,7 +7,7 @@ include __DIR__ . '/includes/header.php';
   <label for="password">Mot de passe :</label>
   <input type="password" id="password" name="password" required>
   <input type="submit" name="soumission" class="bouton" value="Connexion" id="submitButton">
-  <?php if (isset($_GET['error']) && $_GET['error'] == 21) { ?>
+  <?php if ($error == 21) { ?>
     <div class="message echec">
       <p>Mot de passe incorrect.</p>
     </div>

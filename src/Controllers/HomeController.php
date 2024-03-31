@@ -1,4 +1,5 @@
 <?php
+
 namespace src\Controllers;
 
 use src\Services\Render;
@@ -18,9 +19,11 @@ class HomeController {
     }
 
     public function login() {
-        $this->render('login');
+        $success = isset($_GET['success']) ? $_GET['success'] : null;
+        $error  = isset($_GET['error']) ? $_GET['error'] : null;
+        $this->render('login', ['error' => $error, 'success' => $success]);
     }
-    
+
     public function notFound() {
         $this->render('404');
     }
