@@ -1,12 +1,12 @@
 <div id="reservations-section">
     <?php
-        require_once('./src/classes/Database.php');
 
-        $db = new Database();
-        $reservations = $db->getAllReservations();
-        foreach ($reservations as $reservation) {
-            echo 
-            '<div class="reservation-card">
+    use src\Repositories\ReservationRepository;
+
+    $resaRepo = new ReservationRepository();
+    foreach ($resaRepo->getAll() as $reservation) {
+        echo
+        '<div class="reservation-card">
                 <h3> Nom : ' . $reservation->getNom() . '</h3>
                 <div class="reservation-column">
                     <p> Prenom : </p>
@@ -35,6 +35,6 @@
                     <p>' . $reservation->getVan() . '</p>
                 </div>
             </div>';
-        }
+    }
     ?>
 </div>

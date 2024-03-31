@@ -38,7 +38,6 @@ final class ReservationController {
   }
 
   public function registerReseversation() {
-    // var_dump($_POST);
     $newReservation = new Reservation();
     $newReservation->setNombreReservation($_POST['nombrePlaces']);
     $newReservation->setPrixTotal($this->calculateTotalPrice());
@@ -52,7 +51,6 @@ final class ReservationController {
     $newReservation->setCasques($_POST['nombreCasquesEnfants']);
     $newReservation->setLuges($_POST['NombreLugesEte']);
 
-    // var_dump($_SESSION);
     if (!isset($_SESSION['connected']) || !$_SESSION['connected']) {
       
       echo 'Session is not set. Fetching ID by mail.';
@@ -60,7 +58,6 @@ final class ReservationController {
         $userRepo = new UserRepository();
         $user = $userRepo->getByMail($_POST['email']);
         $newReservation->setIdUtilisateur($user->ID);
-        // var_dump($newReservation);
       }
     } else if (isset($_SESSION['userId'])) {
       $newReservation->setIdUtilisateur($_SESSION['userId']);

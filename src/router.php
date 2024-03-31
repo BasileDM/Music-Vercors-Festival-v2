@@ -36,11 +36,17 @@ switch ($route) {
         break;
 
     case HOME_URL . 'login':
-        if (Auth::isAuth()) {
-            header('Location: ' . HOME_URL . 'dashboard');
-            die();
+        if ($method === 'POST') {
+            $pass = $_POST['password'];
+            $email = $_POST['email'];
+            Auth::login($pass, $email);
         } else {
-            $homeController->login();
+            if (Auth::isAuth()) {
+                header('Location: ' . HOME_URL . 'dashboard');
+                die();
+            } else {
+                $homeController->login();
+            }
         }
         break;
 
