@@ -133,9 +133,7 @@ class ReservationRepository {
                 break;
             case 'pass3jours' :
                 $passId = 3;
-                if ($_POST['pass3jours'] == 'choixJour123') {
-                    $passDate = '2024-01-01';
-                }
+                $passDate = '2024-01-01';
                 break;
             case 'pass1jourreduit' :
                 $passId = 4;

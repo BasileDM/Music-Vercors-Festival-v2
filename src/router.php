@@ -4,7 +4,7 @@ use src\Controllers\HomeController;
 use src\Controllers\ReservationController;
 use src\Services\Auth;
 
-$route = $_SERVER['REQUEST_URI'];
+$route = $_SERVER['REDIRECT_URL'];
 $method = $_SERVER['REQUEST_METHOD'];
 
 $homeController = new HomeController();
