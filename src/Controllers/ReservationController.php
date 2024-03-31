@@ -14,12 +14,12 @@ final class ReservationController {
   public function registerUser() {
     try {
       $newUser = new User();
-      $newUser->setNom($_POST['nom']);
-      $newUser->setPrenom($_POST['prenom']);
-      $newUser->setTelephone($_POST['telephone']);
-      $newUser->setAdresse($_POST['adressePostale']);
+      $newUser->setNom(htmlspecialchars($_POST['nom']));
+      $newUser->setPrenom(htmlspecialchars($_POST['prenom']));
+      $newUser->setTelephone(htmlspecialchars($_POST['telephone']));
+      $newUser->setAdresse(htmlspecialchars($_POST['adressePostale']));
       $newUser->setRole('user');
-      $newUser->setEmail($_POST['email']);
+      $newUser->setEmail(htmlspecialchars($_POST['email']));
       
       
       $date = new DateTime();

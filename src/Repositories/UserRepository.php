@@ -26,7 +26,6 @@ class UserRepository {
     $sql = "INSERT INTO " . PREFIXE . "utilisateurs (NOM, PRENOM, TELEPHONE, ADRESSE, PASSWORD, ROLE, RGPD, MAIL) 
     VALUES (:nom, :prenom, :telephone, :adresse, :password, :role, :rgpd, :mail)";
     $statement = $this->db->prepare($sql);
-    // die();
     $statement->execute([
       'nom' => $newUser->getNom(),
       'prenom' => $newUser->getPrenom(),

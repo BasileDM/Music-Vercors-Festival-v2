@@ -36,7 +36,12 @@ switch ($route) {
         break;
 
     case HOME_URL . 'login':
-        $homeController->login();
+        if (Auth::isAuth()) {
+            header('Location: ' . HOME_URL . 'dashboard');
+            die();
+        } else {
+            $homeController->login();
+        }
         break;
 
     case HOME_URL . 'logout':

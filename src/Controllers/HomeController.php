@@ -8,9 +8,9 @@ class HomeController {
     use Render;
 
     public function index() {
-        $succes = isset($_GET['succes']) ? $_GET['succes'] : null;
+        $success = isset($_GET['success']) ? $_GET['success'] : null;
         $error  = isset($_GET['error']) ? $_GET['error'] : null;
-        $this->render('home', ['error' => $error, 'succes' => $succes]);
+        $this->render('home', ['error' => $error, 'success' => $success]);
     }
 
     public function dashboard() {
