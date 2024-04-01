@@ -4,7 +4,7 @@ use src\Controllers\HomeController;
 use src\Controllers\ReservationController;
 use src\Services\Auth;
 
-$route = $_SERVER['REQUEST_URI'];
+$route = $_SERVER['REDIRECT_URL'];
 $method = $_SERVER['REQUEST_METHOD'];
 
 $homeController = new HomeController();
@@ -21,7 +21,7 @@ switch ($route) {
                 $homeController->index();
             }
         } else if ($method === 'POST') {
-            $ReservationController->registerUser();
+            $ReservationController->registerReseversation();
         }
         
         break;
@@ -36,14 +36,27 @@ switch ($route) {
         break;
 
     case HOME_URL . 'login':
-        $homeController->login();
+        if ($method === 'POST') {
+            $pass = $_POST['password'];
+            $email = $_POST['email'];
+            Auth::login($pass, $email);
+        } else {
+            if (Auth::isAuth()) {
+                header('Location: ' . HOME_URL . 'dashboard');
+                die();
+            } else {
+                $homeController->login();
+            }
+        }
         break;
 
     case HOME_URL . 'logout':
-        echo 'hello';
         Auth::logout();
-        echo 'hello';
         die();
+        break;
+
+    case HOME_URL . 'receipt':
+        $homeController->receipt();
         break;
 
     default:

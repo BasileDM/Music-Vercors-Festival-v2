@@ -1,8 +1,11 @@
-<?php
-  include __DIR__ . '/includes/header.php';
-?>
+<?php include_once __DIR__ . '/includes/header.php'; ?>
 
 <body>
+  <?php if ($error === '101') { ?>
+    <div class="messageError">Une erreur est survenue lors de l'initialisation de la base de données.</div>
+  <?php }; if ($success === '101') { ?>
+    <div class="messageSuccess">La base de données a été correctement initialisée.</div>
+  <?php } ?>
   <form onsubmit="return finalCheck(event)" action="#" id="inscription" method="POST">
     <fieldset id="reservation">
       <legend>Réservation</legend>
@@ -11,6 +14,7 @@
       <?php if (isset($errorCode) && $errorCode === 1) { ?>
         <div class="messageError">Le nombre de places n'est pas valide.</div>
       <?php } ?>
+
       <h3>Réservation(s) en tarif réduit</h3>
       <input type="checkbox" name="tarifReduit" id="tarifReduit" onclick="afficherTarifReduit()">
       <label for="tarifReduit">Ma réservation sera en tarif réduit</label>
@@ -62,25 +66,25 @@
     <fieldset id="options">
       <legend>Options</legend>
       <h3>Réserver un emplacement de tente : </h3>
-      <input type="checkbox" id="tenteNuit1" name="emplacementTente" value="choixNuit1" onchange="cocherTente3nuits()">
+      <input type="checkbox" id="tenteNuit1" name="emplacementTente[]" value="choixNuit1" onchange="cocherTente3nuits()">
       <label for="tenteNuit1">Pour la nuit du 01/07 (5€)</label>
-      <input type="checkbox" id="tenteNuit2" name="emplacementTente" value="choixNuit2" onchange="cocherTente3nuits()">
+      <input type="checkbox" id="tenteNuit2" name="emplacementTente[]" value="choixNuit2" onchange="cocherTente3nuits()">
       <label for="tenteNuit2">Pour la nuit du 02/07 (5€)</label>
-      <input type="checkbox" id="tenteNuit3" name="emplacementTente" value="choixNuit3" onchange="cocherTente3nuits()">
+      <input type="checkbox" id="tenteNuit3" name="emplacementTente[]" value="choixNuit3" onchange="cocherTente3nuits()">
       <label for="tenteNuit3">Pour la nuit du 03/07 (5€)</label>
       <br>
-      <input type="checkbox" id="tente3Nuits" name="emplacementTente" value="choix3Nuits" onchange="cocherTente3nuits()">
+      <input type="checkbox" id="tente3Nuits" name="emplacementTente[]" value="choix3Nuits" onchange="cocherTente3nuits()">
       <label for="tente3Nuits">Pour les 3 nuits (12€)</label>
 
       <h3>Réserver un emplacement de camion aménagé : </h3>
-      <input type="checkbox" id="vanNuit1" name="emplacementVan" value="choixVanNuit1" onchange="cocherVan3nuits()">
+      <input type="checkbox" id="vanNuit1" name="emplacementVan[]" value="choixVanNuit1" onchange="cocherVan3nuits()">
       <label for="vanNuit1">Pour la nuit du 01/07 (5€)</label>
-      <input type="checkbox" id="vanNuit2" name="emplacementVan" value="choixVanNuit2" onchange="cocherVan3nuits()">
+      <input type="checkbox" id="vanNuit2" name="emplacementVan[]" value="choixVanNuit2" onchange="cocherVan3nuits()">
       <label for="vanNuit2">Pour la nuit du 02/07 (5€)</label>
-      <input type="checkbox" id="vanNuit3" name="emplacementVan" value="choixVanNuit3" onchange="cocherVan3nuits()">
+      <input type="checkbox" id="vanNuit3" name="emplacementVan[]" value="choixVanNuit3" onchange="cocherVan3nuits()">
       <label for="vanNuit3">Pour la nuit du 03/07 (5€)</label>
       <br>
-      <input type="checkbox" id="van3Nuits" name="emplacementVan" value="choixVan3Nuits" onchange="cocherVan3nuits()">
+      <input type="checkbox" id="van3Nuits" name="emplacementVan[]" value="choixVan3Nuits" onchange="cocherVan3nuits()">
       <label for="van3Nuits">Pour les 3 nuits (12€)</label>
 
       <h3>Venez-vous avec des enfants ?</h3>
@@ -116,7 +120,7 @@
       <input type="email" name="email" id="email" required>
       <br>
       <?php if (isset($errorCode) && $errorCode === 4) { ?>
-        <div class="message error">Saisir l'adresse mail.</div>
+        <div class="messageError">Saisir l'adresse mail.</div>
       <?php } ?>
       <label for="telephone">Téléphone :</label>
       <input type="text" name="telephone" id="telephone" required>
@@ -129,15 +133,15 @@
         <div class="messageError">Ajouter adresse postale.</div>
       <?php } ?>
       <label for="password">Mot de passe :</label>
-    <input type="password" id="password" name="password" required>
-    <label for="password">Vérifier votre mot de passe :</label>
-    <input type="password" id="verifPassword" name="password" required>
-    <label for="CGU">J'accepte les conditions générales d'utilisation</label>
-    <input id="CGU" name="CGU" type="checkbox">
+      <input type="password" id="password" name="password" required>
+      <label for="password">Vérifier votre mot de passe :</label>
+      <input type="password" id="verifPassword" name="password" required>
+      <label for="CGU">J'accepte les conditions générales d'utilisation</label>
+      <input id="CGU" name="CGU" type="checkbox">
       <input type="submit" name="soumission" class="bouton" value="Réserver" id="submitButton">
     </fieldset>
   </form>
 
-<?php
+  <?php
   include __DIR__ . '/includes/footer.php';
-?>
+  ?>

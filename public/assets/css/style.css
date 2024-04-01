@@ -1,124 +1,131 @@
 body {
-    background-image:url('../img/bg.jpeg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    font-family: "PT Sans Narrow", sans-serif;
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    background-attachment: fixed;
-    background-position: center;
+  background-image: url("../img/bg.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: "PT Sans Narrow", sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background-attachment: fixed;
+  background-position: center;
 }
 
-@keyframes animation{
-    0% {
-      transform: scale(0.25);
-    }
-    100% {
-      transform: scale(1);
-    }
+@keyframes animation {
+  0% {
+    transform: scale(0.25);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 header {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 
-    .bouton {
-        margin: 5%;
-    }
+  .bouton {
+    margin: 5%;
+  }
 }
 
 #logo {
-    width: 30%;
-    height: 30%;
+  width: 30%;
+  height: 30%;
 }
 
 #connexion {
-    height: 40px;
-    width: 105px;
-    font-size: 20px;
+  height: 40px;
+  width: 105px;
+  font-size: 20px;
 }
 
-label, p {
-    font-weight: 400;
-    font-style: normal;
-    font-size: 18px;
-  }
+label,
+p {
+  font-weight: 400;
+  font-style: normal;
+  font-size: 18px;
+}
 
 p {
-    font-style: italic;
+  font-style: italic;
 }
 
 label {
-    margin: 15px 29px 0 0;
+  margin: 15px 29px 0 0;
 }
-  
-h3, h4 {
-    font-weight: 500;
-    font-style: normal;
-    font-size: 22px;
-  }  
+
+h3,
+h4 {
+  font-weight: 500;
+  font-style: normal;
+  font-size: 22px;
+}
 
 legend {
-    margin: -30px;
-    position:absolute;
-    font-size: x-large;
-    font-weight: 600;
+  margin: -30px;
+  position: absolute;
+  font-size: x-large;
+  font-weight: 600;
 }
 
 fieldset {
-    border: 0;
-    border-radius: 8px;
-    margin: 2% 7%;
-    background-color: white;
-    padding: 5%;
-    animation: 0.2s ease-in animation;
+  border: 0;
+  border-radius: 8px;
+  margin: 2% 7%;
+  background-color: white;
+  padding: 5%;
+  animation: 0.2s ease-in animation;
 }
 
 #coordonnees {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
-input[type="text"], input[type="email"], input[type="password"] {
-    width: 60%;
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 60%;
 }
 
 input[type="checkbox"] {
-    accent-color: black;
+  accent-color: black;
 }
 
 input[type="submit"] {
-    margin: 15px 0 0 0;
-    font-family: "PT Sans Narrow", sans-serif;
-    font-size: 30px;
-    background-color: white;
+  margin: 15px 0 0 0;
+  font-family: "PT Sans Narrow", sans-serif;
+  font-size: 30px;
+  background-color: white;
 }
 
 input[type="radio"] {
-    accent-color: black;
+  accent-color: black;
 }
 
-
 #pass1jourDate {
-    display: none;
+  display: none;
 }
 
 #pass2joursDate {
-    display: none;
+  display: none;
 }
 
 #sectiontarifReduit {
-    display: none;
+  display: none;
 }
 
 .messageError {
-    display: block;
-    color: red !important;
+  display: block;
+  color: red !important;
 }
-
+.messageSuccess {
+    display: block;
+    color: green !important;
+  }
+  
 
 .bouton {
   align-items: center;
@@ -144,8 +151,8 @@ input[type="radio"] {
 }
 
 a {
-    text-decoration: none;
-    color: black;
+  text-decoration: none;
+  color: black;
 }
 
 .bouton:after {
@@ -159,7 +166,7 @@ a {
   position: absolute;
   top: -2px;
   transform: translate(8px, 8px);
-  transition: transform .2s ease-out;
+  transition: transform 0.2s ease-out;
   z-index: -1;
 }
 
@@ -169,7 +176,7 @@ a {
 
 .bouton:active {
   background-color: white;
-  color:#111;
+  color: #111;
   outline: 0;
 }
 
@@ -178,14 +185,14 @@ a {
 }
 
 #loginForm {
-    margin-left: 5%;
+  margin-left: 5%;
 }
 
 #receipt {
-    margin-left: 5%;
-    background-color: white;
-    border-radius: 8px;
-    padding: 1em;
-    max-width: 40%;
-    margin-left: 15%;
+  margin-left: 5%;
+  background-color: white;
+  border-radius: 8px;
+  padding: 1em;
+  max-width: 40%;
+  margin-left: 15%;
 }

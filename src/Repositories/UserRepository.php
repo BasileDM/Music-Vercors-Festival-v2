@@ -38,4 +38,12 @@ class UserRepository {
     ]);
     return $this->db->lastInsertId();
   }
+
+  public function getByMail($mail) {
+    $sql = "SELECT * FROM " . PREFIXE . "utilisateurs WHERE MAIL = :mail";
+    $statement = $this->db->prepare($sql);
+    $statement->execute(['mail' => $mail]);
+    $user = $statement->fetch(PDO::FETCH_OBJ);
+    return $user;
+  }
 }
