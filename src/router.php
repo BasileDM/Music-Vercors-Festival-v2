@@ -14,7 +14,7 @@ switch ($route) {
 
     case HOME_URL:
         if ($method === 'GET') {
-                if (Auth::isAuth()) {
+            if (Auth::isAuth()) {
                 header('Location: ' . HOME_URL . 'dashboard');
                 die();
             } else {
@@ -23,7 +23,7 @@ switch ($route) {
         } else if ($method === 'POST') {
             $ReservationController->registerReseversation();
         }
-        
+
         break;
 
     case HOME_URL . 'dashboard':
