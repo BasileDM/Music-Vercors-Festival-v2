@@ -1,5 +1,5 @@
 <?php isset($_GET['section']) ? $section = $_GET['section'] : $section = false ?>
-<div id="colonne">
+<div id="colonne" class="invis">
     <h2>Bonjour <?= $_SESSION['user'] ?> !</h2>
     <ul>
         <li onclick="location.href='?section=compte'" id="compte-item" <?= $section == 'compte' ? 'class="actif"' : 'class=""' ?>>Mon compte</li>

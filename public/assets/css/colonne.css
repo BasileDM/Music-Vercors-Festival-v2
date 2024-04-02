@@ -1,8 +1,9 @@
 #burger {
-  display: inline-block;
+  display: block;
   cursor: pointer;
   border: 1px solid black;
   padding: 5px;
+  height: 40px;
 }
 
 #burger .line {
@@ -13,18 +14,10 @@
   transition: transform 0.5s;
 }
 
-#burger:hover .line:first-child {
-  transform: rotate(45deg);
+.flex {
+  display: flex !important;
 }
 
-#burger:hover .line:nth-child(2) {
-  opacity: 0;
-}
-
-#burger:hover .line:last-child {
-  transform: rotate(-45deg);
-}
-
-.colonne-invisible {
-  display: none;
+.invis {
+  display: none !important;
 }
