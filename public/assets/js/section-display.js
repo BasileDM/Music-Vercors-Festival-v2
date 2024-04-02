@@ -1,5 +1,6 @@
 // qaund on arrive sur le formulaire : affichage que de la section Réservation
 
+
 const fieldsetReservation = document.getElementById("reservation");
 const fieldsetOptions = document.getElementById("options");
 const fieldsetCoordonnees = document.getElementById("coordonnees");
@@ -19,10 +20,14 @@ const boutonPassTroisJours = document.getElementById("pass3jours");
 const labelPassTroisJours = document.querySelector('label[for="pass3jours"]');
 const pass3JoursReduit = document.getElementById("pass3joursreduit");
 
+
+
 fieldsetReservation.style.display = "block";
 fieldsetOptions.style.display = "none";
 fieldsetCoordonnees.style.display = "none";
 sectionCasques.style.display = "none";
+
+
 
 function resetDisplayedFields() { 
     choixUnJour.style.display = "none";

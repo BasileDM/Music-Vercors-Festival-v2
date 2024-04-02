@@ -1,0 +1,30 @@
+#burger {
+  display: inline-block;
+  cursor: pointer;
+  border: 1px solid black;
+  padding: 5px;
+}
+
+#burger .line {
+  width: 35px;
+  height: 5px;
+  background-color: black;
+  margin: 6px 0;
+  transition: transform 0.5s;
+}
+
+#burger:hover .line:first-child {
+  transform: rotate(45deg);
+}
+
+#burger:hover .line:nth-child(2) {
+  opacity: 0;
+}
+
+#burger:hover .line:last-child {
+  transform: rotate(-45deg);
+}
+
+.colonne-invisible {
+  display: none;
+}
