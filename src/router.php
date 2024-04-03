@@ -59,6 +59,15 @@ switch ($route) {
         $homeController->receipt();
         break;
 
+    case HOME_URL . 'reservation':
+        if (!Auth::isAuth()) {
+            header('Location: ' . HOME_URL . 'login');
+            die();
+        } else {
+            $ReservationController->seeDetails();
+        }
+        break;
+
     default:
         $homeController->notFound();
         break;

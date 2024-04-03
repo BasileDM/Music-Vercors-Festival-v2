@@ -8,8 +8,11 @@ use src\Models\Reservation;
 use src\Models\User;
 use src\Repositories\ReservationRepository;
 use src\Repositories\UserRepository;
+use src\Services\Render;
 
 final class ReservationController {
+
+  use Render;
 
   public function registerUser() {
     try {
@@ -145,5 +148,9 @@ final class ReservationController {
     $prixTotal += $_POST['NombreLugesEte'] * 5;
 
     return $prixTotal;
+  }
+
+  public function seeDetails() {
+    $this->render('reservationDetails');
   }
 }
