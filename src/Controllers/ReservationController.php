@@ -31,8 +31,16 @@ final class ReservationController {
       $newUser->setRGPD($date);
       
       $userRepo = new UserRepository();
-      $newUserId = $userRepo->create($newUser);
-      $newUser->setId($newUserId);
+      $existingUser = $userRepo->getByMail($newUser->getEmail());
+
+      // WIP
+      if ($existingUser) {
+        $newUserId = $existingUser->getId();
+        
+      } else {
+        $newUserId = $userRepo->create($newUser);
+        $newUser->setId($newUserId);
+      }
       return 'success';
 
     } catch (\Exception $e) {

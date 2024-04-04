@@ -17,7 +17,7 @@
 
 <body>
     <header>
-        <img src="./assets/img/vercorsLogo.png" id="logo" alt="Vercors_Music_Festival_Logo" onclick="location.href='./'">
+        <img src="./assets/img/vercorsLogo.png" id="logo" alt="Vercors_Music_Festival_Logo" onclick="location.href='./'" style="cursor:pointer" title="Home">
         <?php if (isset($_SESSION['connected']) && $_SESSION['connected'] === true) { ?>
             <div id="dashboardBtns">
                 <div id='dashboard' class="bouton">
