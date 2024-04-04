@@ -31,7 +31,7 @@ class UserRepository {
       'prenom' => $newUser->getPrenom(),
       'telephone' => $newUser->getTelephone(),
       'adresse' => $newUser->getAdresse(),
-      'password' => password_hash('aaa', PASSWORD_DEFAULT),
+      'password' => password_hash($newUser->getPassword(), PASSWORD_DEFAULT),
       'role' => $newUser->getRole(),
       'rgpd' => $newUser->getRgpdToString(),
       'mail' => $newUser->getEmail()

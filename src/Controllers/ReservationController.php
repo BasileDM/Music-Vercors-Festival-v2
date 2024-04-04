@@ -23,6 +23,7 @@ final class ReservationController {
       $newUser->setAdresse(htmlspecialchars($_POST['adressePostale']));
       $newUser->setRole('user');
       $newUser->setEmail(htmlspecialchars($_POST['email']));
+      $newUser->setPassword($_POST['password']);
       
       
       $date = new DateTime();

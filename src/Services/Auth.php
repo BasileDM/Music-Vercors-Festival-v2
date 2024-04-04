@@ -19,6 +19,8 @@ final class Auth {
     $userRepo = new UserRepository();
     $user = $userRepo->getByMail($mail);
     var_dump($user);
+    var_dump(password_verify($pass, $user->PASSWORD));
+    die();
     
     if ($user && password_verify($pass, $user->PASSWORD)) {
       $_SESSION['connected'] = true;
