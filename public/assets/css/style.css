@@ -30,13 +30,13 @@ header {
 }
 
 #logo {
-  width: 30%;
-  height: 30%;
+  width: 40%;
+  height: 40%;
 }
 
 #connexion {
   height: 40px;
-  width: 105px;
+  width: 120px;
   font-size: 20px;
 }
 
@@ -97,7 +97,7 @@ input[type="checkbox"] {
 input[type="submit"] {
   margin: 15px 0 0 0;
   font-family: "PT Sans Narrow", sans-serif;
-  font-size: 30px;
+  font-size: 20px;
   background-color: white;
 }
 
@@ -195,4 +195,44 @@ a {
   padding: 1em;
   max-width: 40%;
   margin-left: 15%;
+}
+
+@media only screen and (max-width: 814px) {
+  #logo {
+    width: 60%;
+    height: 60%;
+  }
+  #connexion {
+    height: 30px;
+    width: 100px;
+    font-size: 15px;
+  }
+  legend {
+    margin: -10px;
+    position: absolute;
+    font-size: x-large;
+    font-weight: 600;
+  }
+  h3,
+h4 {
+  font-weight: 500;
+  font-style: normal;
+  font-size: 16px;
+}
+label,
+p {
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+}
+.bouton {
+  height: 40px;
+  width : 25%;
+}
+#submitButton {
+  height: 40px;
+  width : 25%;
+  font-size: 15px;
+}
+
 }

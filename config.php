@@ -8,4 +8,4 @@
         
         define('HOME_URL', '/');
         
-        define('DB_INITIALIZED', FALSE);
+        define('DB_INITIALIZED', TRUE);

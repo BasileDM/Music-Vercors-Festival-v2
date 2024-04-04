@@ -330,14 +330,18 @@ const emailField = document.getElementById("email");
 const phoneField = document.getElementById("telephone");
 const addressField = document.getElementById("adressePostale");
 const submitButton = document.getElementById("submitButton");
+const passwordField = document.getElementById("password");
+const checkPasswordField = document.getElementById("verifPassword");
 let islastNameValid = false;
 let isFirstNameValid = false;
 let isEmailValid = false;
 let isPhoneValid = false;
 let isAddressValid = false;
+let isPasswordValid = false;
+let isCheckPasswordValid = false;
 
 function checkIfSection3IsValid() {
-    if (!islastNameValid || !isFirstNameValid || !isEmailValid || !isPhoneValid || !isAddressValid) {
+    if (!islastNameValid || !isFirstNameValid || !isEmailValid || !isPhoneValid || !isAddressValid || !isPasswordValid) {
         submitButton.style.display = "none";
         if (!document.querySelector(".error-message-submit")) {
             let submitSectionPlaceholder = document.createElement("p");
@@ -436,6 +440,25 @@ addressField.onchange = () => {
     }
     checkIfSection3IsValid();
 }
+
+passwordField.onchange = () => {
+    passwordField.value = passwordField.value.trim();
+    if (isStringInvalid(passwordField.value) || passwordField.value.length < 8 || passwordField.value.length > 50) {
+        errorMessage = "Veuillez renseigner un mot de passe valide.";
+        isPasswordValid = displayError(passwordField, errorMessage);
+    } else {
+        isPasswordValid = validateField(passwordField);
+    }
+    if (passwordField.value === checkPasswordField.value) {
+        isCheckPasswordValid = validateField(confirmPasswordField);
+    } else {
+        errorMessage = "Le mot de passe n'est pas identique.";
+        isCheckPasswordValid = displayError(confirmPasswordField, errorMessage);
+    }
+    checkIfSection3IsValid();
+}
+
+
 
 checkIfSection3IsValid();
 //#endregion
