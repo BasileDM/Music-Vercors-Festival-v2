@@ -46,4 +46,12 @@ class UserRepository {
     $user = $statement->fetch(PDO::FETCH_OBJ);
     return $user;
   }
+
+  public function getMailWithId($id) {
+    $sql = "SELECT MAIL FROM " . PREFIXE . "utilisateurs WHERE ID = :id";
+    $statement = $this->db->prepare($sql);
+    $statement->execute(['id' => $id]);
+    $user = $statement->fetch(PDO::FETCH_OBJ);
+    return $user->MAIL;
+  }
 }

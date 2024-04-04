@@ -1,4 +1,14 @@
-<?php include_once __DIR__ . '/includes/header.php'; ?>
+<?php
+
+use src\Repositories\UserRepository;
+
+include_once __DIR__ . '/includes/header.php';
+if (isset($_SESSION['connected']) && $_SESSION['connected'] === true) {
+  $userRepo = new UserRepository();
+  $userMail = $userRepo->getMailWithId($_SESSION['userId']);
+  $user = $userRepo->getByMail($userMail);
+}
+?>
 
 <body>
   <?php if ($error === '101') { ?>
@@ -70,7 +80,7 @@
         </section>
 
         <div><input type="radio" name="passSelection" id="pass3jours" value="pass3jours" onclick="afficherChoixTroisJours()">
-        <label for="pass3jours">Pass 3 jours : 100€</label>
+          <label for="pass3jours">Pass 3 jours : 100€</label>
         </div>
       </section>
 
@@ -127,30 +137,30 @@
     <fieldset id="coordonnees">
       <legend>Coordonnées</legend>
       <br>
-      <label for="nom">Nom :</label>
-      <input type="text" name="nom" id="nom" required>
-      <label for="prenom">Prénom :</label>
-      <input type="text" name="prenom" id="prenom" required>
-      <label for="email">Email :</label>
-      <input type="email" name="email" id="email" required>
+      <label for="nom">Nom* :</label>
+      <input type="text" name="nom" id="nom" <?php if (isset($_SESSION['connected']) && $_SESSION['connected'] === true) { ?> value="<?= $user->NOM; ?>" <?php } ?> required>
+      <label for="prenom">Prénom* :</label>
+      <input type="text" name="prenom" id="prenom" <?php if (isset($_SESSION['connected']) && $_SESSION['connected'] === true) { ?> value="<?= $user->PRENOM; ?>" <?php } ?> required>
+      <label for="email">Email* :</label>
+      <input type="email" name="email" id="email" <?php if (isset($_SESSION['connected']) && $_SESSION['connected'] === true) { ?> value="<?= $user->MAIL; ?>" <?php } ?> required>
       <?php if (isset($errorCode) && $errorCode === 4) { ?>
         <div class="messageError">Saisir l'adresse mail.</div>
       <?php } ?>
-      <label for="telephone">Téléphone :</label>
-      <input type="text" name="telephone" id="telephone" required>
+      <label for="telephone">Téléphone* :</label>
+      <input type="text" name="telephone" id="telephone" <?php if (isset($_SESSION['connected']) && $_SESSION['connected'] === true) { ?> value="<?= $user->TELEPHONE; ?>" <?php } ?> required>
       <?php if (isset($errorCode) && $errorCode === 5) { ?>
         <div class="messageError">.</div>
       <?php } ?>
-      <label for="adressePostale">Adresse Postale :</label>
-      <input type="text" name="adressePostale" id="adressePostale" required>
+      <label for="adressePostale">Adresse Postale* :</label>
+      <input type="text" name="adressePostale" id="adressePostale" <?php if (isset($_SESSION['connected']) && $_SESSION['connected'] === true) { ?> value="<?= $user->ADRESSE; ?>" <?php } ?> required>
       <?php if (isset($errorCode) && $errorCode === 6) { ?>
         <div class="messageError">Ajouter adresse postale.</div>
       <?php } ?>
-      <label for="password">Mot de passe :</label>
+      <label for="password">Mot de passe* :</label>
       <input type="password" id="password" name="password" required>
-      <label for="password">Vérifier votre mot de passe :</label>
+      <label for="password">Vérifier votre mot de passe* :</label>
       <input type="password" id="verifPassword" name="password" required>
-      <label for="CGU">J'accepte les conditions générales d'utilisation <input id="CGU" name="CGU" type="checkbox"></label>
+      <label for="CGU">J'accepte les conditions générales d'utilisation* <input id="CGU" name="CGU" type="checkbox"></label>
       <input type="submit" name="soumission" class="bouton" value="Réserver" id="submitButton">
     </fieldset>
   </form>
