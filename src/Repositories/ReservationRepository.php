@@ -190,4 +190,56 @@ class ReservationRepository {
         $statement->execute(['id' => $id]);
         return $statement->fetch(PDO::FETCH_OBJ);
     }
+
+    public function getAllInfoByResaId($id) {
+        $sql = "SELECT 
+        ID, 
+        NOM, 
+        PRENOM, 
+        MAIL, 
+        ADRESSE, 
+        TELEPHONE, 
+        PRIX_TOTAL, 
+        PASS_NAME, 
+        JOUR, 
+        SUM(CASE WHEN NOM_EXTRA = 'casques' THEN QUANTITY_EXTRAS ELSE 0 END) AS CASQUES_QUANTITY,
+        SUM(CASE WHEN NOM_EXTRA = 'luges' THEN QUANTITY_EXTRAS ELSE 0 END) AS LUGES_QUANTITY
+    FROM 
+        (SELECT 
+            vercors_reservations.ID, 
+            vercors_utilisateurs.NOM, 
+            vercors_utilisateurs.PRENOM, 
+            vercors_utilisateurs.MAIL, 
+            vercors_utilisateurs.ADRESSE, 
+            vercors_utilisateurs.TELEPHONE, 
+            vercors_reservations.PRIX_TOTAL, 
+            vercors_pass.NOM AS PASS_NAME, 
+            vercors_relation_reservation_pass.JOUR, 
+            vercors_relation_reservation_extras.QUANTITY AS QUANTITY_EXTRAS, 
+            vercors_extras.NOM AS NOM_EXTRA
+        FROM vercors_reservations
+        JOIN vercors_utilisateurs ON vercors_reservations.ID_UTILISATEUR = vercors_utilisateurs.ID
+        JOIN vercors_relation_reservation_pass ON vercors_relation_reservation_pass.ID_RESERVATION = vercors_reservations.ID
+        JOIN vercors_pass ON vercors_relation_reservation_pass.ID_PASS = vercors_pass.ID
+        JOIN vercors_relation_reservation_extras ON vercors_relation_reservation_extras.ID_RESERVATION = vercors_reservations.ID
+        JOIN vercors_extras ON vercors_relation_reservation_extras.ID_EXTRAS = vercors_extras.ID
+        JOIN vercors_relation_reservation_nuitee ON vercors_relation_reservation_nuitee.ID_RESERVATION = vercors_reservations.ID
+        JOIN vercors_nuitees on vercors_nuitees.ID = vercors_relation_reservation_nuitee.ID_NUITEE
+        WHERE vercors_reservations.ID = :id) AS src
+    GROUP BY 
+        ID, 
+        NOM, 
+        PRENOM, 
+        MAIL, 
+        ADRESSE, 
+        TELEPHONE, 
+        PRIX_TOTAL, 
+        PASS_NAME, 
+        JOUR;
+    ";
+
+        $statement = $this->db->prepare($sql);
+        $statement->execute(['id' => $id]);
+        return $statement->fetch(PDO::FETCH_OBJ);
+    }
 }
