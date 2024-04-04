@@ -3,7 +3,8 @@
 <body>
   <?php if ($error === '101') { ?>
     <div class="messageError">Une erreur est survenue lors de l'initialisation de la base de données.</div>
-  <?php }; if ($success === '101') { ?>
+  <?php };
+  if ($success === '101') { ?>
     <div class="messageSuccess">La base de données a été correctement initialisée.</div>
   <?php } ?>
   <form onsubmit="return finalCheck(event)" action="#" id="inscription" method="POST">
@@ -24,41 +25,53 @@
 
       <!-- tarifs réduits : à n'afficher que si tarif réduit est sélectionné -->
       <section id="choixPass">
-      <section id="sectiontarifReduit">
-        <input type="radio" name="passSelection" id="pass1jourreduit" value="pass1jourreduit" onclick="afficherChoixUnJour()">
-        <label for="pass1jourreduit">Pass 1 jour : 25€</label>
-        <input type="radio" name="passSelection" id="pass2joursreduit" value="pass2joursreduit" onclick="afficherChoixDeuxJours()">
-        <label for="pass2joursreduit">Pass 2 jours : 50€</label>
-        <input type="radio" name="passSelection" id="pass3joursreduit" value="pass3joursreduit" onclick="afficherChoixTroisJours()">
-        <label for="pass3joursreduit">Pass 3 jours : 65€</label>
-      </section>
+        <section id="sectiontarifReduit">
+          <div>
+            <input type="radio" name="passSelection" id="pass1jourreduit" value="pass1jourreduit" onclick="afficherChoixUnJour()">
+            <label for="pass1jourreduit">Pass 1 jour : 25€</label>
+          </div>
+          <div>
+            <input type="radio" name="passSelection" id="pass2joursreduit" value="pass2joursreduit" onclick="afficherChoixDeuxJours()">
+            <label for="pass2joursreduit">Pass 2 jours : 50€</label>
+          </div>
+          <input type="radio" name="passSelection" id="pass3joursreduit" value="pass3joursreduit" onclick="afficherChoixTroisJours()">
+          <label for="pass3joursreduit">Pass 3 jours : 65€</label>
+          </div>
+        </section>
 
-      <input type="radio" name="passSelection" id="pass1jour" value="pass1jour" onclick="afficherChoixUnJour()">
-      <label for="pass1jour">Pass 1 jour : 40€</label>
+        <div>
+          <input type="radio" name="passSelection" id="pass1jour" value="pass1jour" onclick="afficherChoixUnJour()">
+          <label for="pass1jour">Pass 1 jour : 40€</label>
+        </div>
+        <!-- Si case cochée, afficher le choix du jour -->
+        <section id="pass1jourDate">
+          <div><input type="radio" name="pass1jour" id="choixJour1" value="choixJour1">
+            <label for="choixJour1">Pass pour la journée du 01/07</label>
+          </div>
+          <div><input type="radio" name="pass1jour" id="choixJour2" value="choixJour2">
+            <label for="choixJour2">Pass pour la journée du 02/07</label>
+          </div>
+          <div><input type="radio" name="pass1jour" id="choixJour3" value="choixJour3">
+            <label for="choixJour3">Pass pour la journée du 03/07</label>
+          </div>
+        </section>
 
-      <!-- Si case cochée, afficher le choix du jour -->
-      <section id="pass1jourDate">
-        <input type="radio" name="pass1jour" id="choixJour1" value="choixJour1">
-        <label for="choixJour1">Pass pour la journée du 01/07</label>
-        <input type="radio" name="pass1jour" id="choixJour2" value="choixJour2">
-        <label for="choixJour2">Pass pour la journée du 02/07</label>
-        <input type="radio" name="pass1jour" id="choixJour3" value="choixJour3">
-        <label for="choixJour3">Pass pour la journée du 03/07</label>
-      </section>
+        <div><input type="radio" name="passSelection" id="pass2jours" value="pass2jours" onclick="afficherChoixDeuxJours()">
+          <label for="pass2jours">Pass 2 jours : 70€</label>
+        </div>
+        <!-- Si case cochée, afficher le choix des jours -->
+        <section id="pass2joursDate">
+          <div><input type="radio" name="pass2jours" id="choixJour12" value="choixJour12">
+            <label for="choixJour12">Pass pour deux journées du 01/07 au 02/07</label>
+          </div>
+          <div><input type="radio" name="pass2jours" id="choixJour23" value="choixJour23">
+            <label for="choixJour23">Pass pour deux journées du 02/07 au 03/07</label>
+          </div>
+        </section>
 
-      <input type="radio" name="passSelection" id="pass2jours" value="pass2jours" onclick="afficherChoixDeuxJours()">
-      <label for="pass2jours">Pass 2 jours : 70€</label>
-
-      <!-- Si case cochée, afficher le choix des jours -->
-      <section id="pass2joursDate">
-        <input type="radio" name="pass2jours" id="choixJour12" value="choixJour12">
-        <label for="choixJour12">Pass pour deux journées du 01/07 au 02/07</label>
-        <input type="radio" name="pass2jours" id="choixJour23" value="choixJour23">
-        <label for="choixJour23">Pass pour deux journées du 02/07 au 03/07</label>
-      </section>
-
-      <input type="radio" name="passSelection" id="pass3jours" value="pass3jours" onclick="afficherChoixTroisJours()">
-      <label for="pass3jours">Pass 3 jours : 100€</label>
+        <div><input type="radio" name="passSelection" id="pass3jours" value="pass3jours" onclick="afficherChoixTroisJours()">
+        <label for="pass3jours">Pass 3 jours : 100€</label>
+        </div>
       </section>
 
       <!-- FACULTATIF : ajouter un pass groupe (5 adultes : 150€ / jour) uniquement pass 1 jour -->

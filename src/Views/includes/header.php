@@ -18,16 +18,18 @@
 <body>
     <header>
         <img src="./assets/img/vercorsLogo.png" id="logo" alt="Vercors_Music_Festival_Logo" onclick="location.href='./'">
-        <?php if (isset($_SESSION['connected']) && $_SESSION['connected'] === true) {?>
-            <div id='dashboard' class="bouton">
-                <a href="/dashboard">Tableau de bord</a>
+        <?php if (isset($_SESSION['connected']) && $_SESSION['connected'] === true) { ?>
+            <div id="dashboardBtns">
+                <div id='dashboard' class="bouton">
+                    <a href="/dashboard">Tableau de bord</a>
+                </div>
+                <div id='deconnexion' class="bouton">
+                    <a href="./logout">Deconnexion</a>
+                </div>
             </div>
-            <div id='deconnexion' class="bouton">
-                <a href="./logout">Deconnexion</a>
-            </div>
-        <?php } else {?>
+        <?php } else { ?>
             <div id='connexion' class="bouton">
                 <a href="/login">Connexion</a>
             </div>
-        <?php }?>
+        <?php } ?>
     </header>

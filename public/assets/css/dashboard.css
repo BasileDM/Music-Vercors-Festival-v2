@@ -113,3 +113,38 @@
     font-size: x-large;
     font-style: normal;
 }
+#dashboardBtns {
+    display: flex;
+    flex-direction: row;
+}
+#dashboard {
+    height: 50px;
+    width: 130px;
+    font-size: 18px;
+}
+#deconnexion {
+    height: 50px;
+    width: 130px;
+    font-size: 18px;
+}
+
+@media only screen and (max-width : 700px){
+    #logo{
+        width: 60%;
+        height: 60%;
+    }
+    #dashboardBtns {
+        display: flex;
+        flex-direction: column;
+    }
+    #dashboard {
+        height: 40px;
+        width: 100px;
+        font-size: 14px;
+    }
+    #deconnexion {
+        height: 40px;
+        width: 100px;
+        font-size: 14px;
+    }
+}

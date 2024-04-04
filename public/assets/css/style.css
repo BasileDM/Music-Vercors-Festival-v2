@@ -165,7 +165,7 @@ a {
   width: 100%;
   position: absolute;
   top: -2px;
-  transform: translate(8px, 8px);
+  transform: translate(0px, 0px);
   transition: transform 0.2s ease-out;
   z-index: -1;
 }
@@ -197,7 +197,7 @@ a {
   margin-left: 15%;
 }
 
-@media only screen and (max-width: 814px) {
+@media only screen and (max-width: 700px) {
   #logo {
     width: 60%;
     height: 60%;
@@ -227,12 +227,15 @@ p {
 }
 .bouton {
   height: 40px;
-  width : 25%;
+  width : 30%;
 }
 #submitButton {
   height: 40px;
-  width : 25%;
+  width : 40%;
   font-size: 15px;
 }
-
+#choixPass {
+  display: flex;
+  flex-direction: column;
+}
 }
