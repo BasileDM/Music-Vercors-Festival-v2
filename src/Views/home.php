@@ -9,6 +9,7 @@
   <form onsubmit="return finalCheck(event)" action="#" id="inscription" method="POST">
     <fieldset id="reservation">
       <legend>Réservation</legend>
+      <br>
       <h3>Nombre de réservation(s) :</h3>
       <input type="number" name="nombrePlaces" id="NombrePlaces" value="1" required>
       <?php if (isset($errorCode) && $errorCode === 1) { ?>
@@ -22,6 +23,7 @@
       <h3>Choisissez votre formule :</h3>
 
       <!-- tarifs réduits : à n'afficher que si tarif réduit est sélectionné -->
+      <section id="choixPass">
       <section id="sectiontarifReduit">
         <input type="radio" name="passSelection" id="pass1jourreduit" value="pass1jourreduit" onclick="afficherChoixUnJour()">
         <label for="pass1jourreduit">Pass 1 jour : 25€</label>
@@ -57,7 +59,7 @@
 
       <input type="radio" name="passSelection" id="pass3jours" value="pass3jours" onclick="afficherChoixTroisJours()">
       <label for="pass3jours">Pass 3 jours : 100€</label>
-
+      </section>
 
       <!-- FACULTATIF : ajouter un pass groupe (5 adultes : 150€ / jour) uniquement pass 1 jour -->
 
@@ -65,6 +67,7 @@
     </fieldset>
     <fieldset id="options">
       <legend>Options</legend>
+      <br>
       <h3>Réserver un emplacement de tente : </h3>
       <input type="checkbox" id="tenteNuit1" name="emplacementTente[]" value="choixNuit1" onchange="cocherTente3nuits()">
       <label for="tenteNuit1">Pour la nuit du 01/07 (5€)</label>
@@ -110,15 +113,13 @@
     </fieldset>
     <fieldset id="coordonnees">
       <legend>Coordonnées</legend>
+      <br>
       <label for="nom">Nom :</label>
       <input type="text" name="nom" id="nom" required>
-      <br>
       <label for="prenom">Prénom :</label>
       <input type="text" name="prenom" id="prenom" required>
-      <br>
       <label for="email">Email :</label>
       <input type="email" name="email" id="email" required>
-      <br>
       <?php if (isset($errorCode) && $errorCode === 4) { ?>
         <div class="messageError">Saisir l'adresse mail.</div>
       <?php } ?>
@@ -136,8 +137,7 @@
       <input type="password" id="password" name="password" required>
       <label for="password">Vérifier votre mot de passe :</label>
       <input type="password" id="verifPassword" name="password" required>
-      <label for="CGU">J'accepte les conditions générales d'utilisation</label>
-      <input id="CGU" name="CGU" type="checkbox">
+      <label for="CGU">J'accepte les conditions générales d'utilisation <input id="CGU" name="CGU" type="checkbox"></label>
       <input type="submit" name="soumission" class="bouton" value="Réserver" id="submitButton">
     </fieldset>
   </form>
