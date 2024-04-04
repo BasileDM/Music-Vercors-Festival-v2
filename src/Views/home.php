@@ -92,27 +92,32 @@ if (isset($_SESSION['connected']) && $_SESSION['connected'] === true) {
       <legend>Options</legend>
       <br>
       <h3>Réserver un emplacement de tente : </h3>
-      <input type="checkbox" id="tenteNuit1" name="emplacementTente[]" value="choixNuit1" onchange="cocherTente3nuits()">
+      <div><input type="checkbox" id="tenteNuit1" name="emplacementTente[]" value="choixNuit1" onchange="cocherTente3nuits()">
       <label for="tenteNuit1">Pour la nuit du 01/07 (5€)</label>
-      <input type="checkbox" id="tenteNuit2" name="emplacementTente[]" value="choixNuit2" onchange="cocherTente3nuits()">
+      <div><input type="checkbox" id="tenteNuit2" name="emplacementTente[]" value="choixNuit2" onchange="cocherTente3nuits()">
       <label for="tenteNuit2">Pour la nuit du 02/07 (5€)</label>
-      <input type="checkbox" id="tenteNuit3" name="emplacementTente[]" value="choixNuit3" onchange="cocherTente3nuits()">
+      </div>
+      <div><input type="checkbox" id="tenteNuit3" name="emplacementTente[]" value="choixNuit3" onchange="cocherTente3nuits()">
       <label for="tenteNuit3">Pour la nuit du 03/07 (5€)</label>
+      </div>
       <br>
-      <input type="checkbox" id="tente3Nuits" name="emplacementTente[]" value="choix3Nuits" onchange="cocherTente3nuits()">
+      <div><input type="checkbox" id="tente3Nuits" name="emplacementTente[]" value="choix3Nuits" onchange="cocherTente3nuits()">
       <label for="tente3Nuits">Pour les 3 nuits (12€)</label>
-
+      </div>
       <h3>Réserver un emplacement de camion aménagé : </h3>
-      <input type="checkbox" id="vanNuit1" name="emplacementVan[]" value="choixVanNuit1" onchange="cocherVan3nuits()">
+      <div><input type="checkbox" id="vanNuit1" name="emplacementVan[]" value="choixVanNuit1" onchange="cocherVan3nuits()">
       <label for="vanNuit1">Pour la nuit du 01/07 (5€)</label>
-      <input type="checkbox" id="vanNuit2" name="emplacementVan[]" value="choixVanNuit2" onchange="cocherVan3nuits()">
+      </div>
+      <div><input type="checkbox" id="vanNuit2" name="emplacementVan[]" value="choixVanNuit2" onchange="cocherVan3nuits()">
       <label for="vanNuit2">Pour la nuit du 02/07 (5€)</label>
-      <input type="checkbox" id="vanNuit3" name="emplacementVan[]" value="choixVanNuit3" onchange="cocherVan3nuits()">
+      </div>
+      <div></div><input type="checkbox" id="vanNuit3" name="emplacementVan[]" value="choixVanNuit3" onchange="cocherVan3nuits()">
       <label for="vanNuit3">Pour la nuit du 03/07 (5€)</label>
+      </div>
       <br>
-      <input type="checkbox" id="van3Nuits" name="emplacementVan[]" value="choixVan3Nuits" onchange="cocherVan3nuits()">
+      <div></div><input type="checkbox" id="van3Nuits" name="emplacementVan[]" value="choixVan3Nuits" onchange="cocherVan3nuits()">
       <label for="van3Nuits">Pour les 3 nuits (12€)</label>
-
+      </div>
       <h3>Venez-vous avec des enfants ?</h3>
       <input type="radio" id="enfantsOui" name="enfants"><label for="enfantsOui">Oui</label>
       <input type="radio" id="enfantsNon" name="enfants"><label for="enfantsNon">Non</label>

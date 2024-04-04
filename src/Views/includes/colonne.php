@@ -1,3 +1,10 @@
+<div>
+<div id="burger" title="Menu">
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+</div>
+<br>
 <?php isset($_GET['section']) ? $section = $_GET['section'] : $section = false ?>
 <div id="colonne" class="invis">
     <h2>Bonjour <?= $_SESSION['user'] ?> !</h2>
@@ -8,8 +15,5 @@
         <?php } ?>
     </ul>
 </div>
-<div id="burger" title="Menu">
-    <div class="line"></div>
-    <div class="line"></div>
-    <div class="line"></div>
 </div>
+
