@@ -22,4 +22,18 @@ final class NuiteeRepository {
     $stmt->execute();
     return $stmt->fetchColumn();
   }
+
+  public function getByResaId($id) {
+
+    $sql = "
+      SELECT * FROM vercors_nuitees
+      JOIN vercors_relation_reservation_nuitee ON vercors_relation_reservation_nuitee.ID_NUITEE = vercors_nuitees.ID
+      WHERE vercors_relation_reservation_nuitee.ID_RESERVATION = :id;";
+
+    $stmt = $this->db->prepare($sql);
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_OBJ);
+
+  }
 }
