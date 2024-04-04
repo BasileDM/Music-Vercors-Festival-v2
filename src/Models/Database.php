@@ -37,19 +37,20 @@ final class Database {
 
     public function init() {
         if ($this->doesUserTableExists()) {
-            $this->updateConfig();
             return "Database already exists.";
-        }
-        try {
-            $sql = file_get_contents(__DIR__ . "/../Migrations/Vercors-database.sql");
-            $this->db->query($sql);
-            if ($this->updateConfig()) {
-                return true;
-            } else {
-                return false;
+            die();
+        } else {
+            try {
+                $sql = file_get_contents(__DIR__ . "/../Migrations/Vercors-database.sql");
+                $this->db->query($sql);
+                if ($this->updateConfig()) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } catch (\PDOException $error) {
+                return $error->getMessage();
             }
-        } catch (\PDOException $error) {
-            return $error->getMessage();
         }
     }
 
@@ -76,7 +77,7 @@ final class Database {
     }
 
     public function doesUserTableExists() {
-        $sql = "SHOW TABLES LIKE '" . PREFIXE . "utilisateurs'";
+        $sql = "SHOW TABLES LIKE '" . PREFIXE . "utilisateurs';";
         $return = $this->db->query($sql)->fetch();
         if ($return && $return[0] == PREFIXE . "utilisateurs") {
             return true;

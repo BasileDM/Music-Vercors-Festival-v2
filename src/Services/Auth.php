@@ -14,9 +14,13 @@ final class Auth {
   }
 
   public static function login($pass, $mail) {
+    var_dump($_SESSION);
+    var_dump($pass, $mail);
     $userRepo = new UserRepository();
     $user = $userRepo->getByMail($mail);
-    if (password_verify($pass, $user->PASSWORD)) {
+    var_dump($user);
+    
+    if ($user && password_verify($pass, $user->PASSWORD)) {
       $_SESSION['connected'] = true;
       $_SESSION['userId'] = $user->ID;
       $_SESSION['user'] = $user->NOM;

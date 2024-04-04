@@ -49,22 +49,21 @@ class ReservationRepository {
             $statement->execute([
                 'ID_RESERVATION' => $lastReservationId,
                 'ID_NUITEE' => $nuiteesId,
-                'JOUR' => '2024-01-01'
+                'JOUR' => '2024-07-01'
             ]);
-
         } else if (isset($_POST['emplacementTente'])) {
             foreach (explode(',', $newReservation->getEmplacementTente()) as $tente) {
                 if ($tente == 'choixNuit1') {
-                    $jour = '2024-01-01';
+                    $jour = '2024-07-01';
                     $nuiteesId = 1;
                 } elseif ($tente == 'choixNuit2') {
-                    $jour = '2024-01-02';
+                    $jour = '2024-07-02';
                     $nuiteesId = 2;
                 } elseif ($tente == 'choixNuit3') {
-                    $jour = '2024-01-03';
+                    $jour = '2024-07-03';
                     $nuiteesId = 3;
                 }
-                
+
                 $sql = "INSERT INTO " . PREFIXE . "relation_reservation_nuitee (ID_NUITEE, ID_RESERVATION, JOUR) VALUES (:ID_NUITEE, :ID_RESERVATION, :JOUR)";
                 $statement = $this->db->prepare($sql);
                 $statement->execute([
@@ -83,22 +82,21 @@ class ReservationRepository {
             $statement->execute([
                 'ID_RESERVATION' => $lastReservationId,
                 'ID_NUITEE' => $nuiteesId,
-                'JOUR' => '2024-01-01'
+                'JOUR' => '2024-07-01'
             ]);
-
         } else if (isset($_POST['emplacementVan'])) {
             foreach (explode(',', $newReservation->getEmplacementVan()) as $van) {
                 if ($van == 'choixVanNuit1') {
-                    $jour = '2024-01-01';
+                    $jour = '2024-07-01';
                     $nuiteesId = 5;
                 } elseif ($van == 'choixVanNuit2') {
-                    $jour = '2024-01-02';
+                    $jour = '2024-07-02';
                     $nuiteesId = 6;
                 } elseif ($van == 'choixVanNuit3') {
-                    $jour = '2024-01-03';
+                    $jour = '2024-07-03';
                     $nuiteesId = 7;
                 }
-                
+
                 $sql = "INSERT INTO " . PREFIXE . "relation_reservation_nuitee (ID_NUITEE, ID_RESERVATION, JOUR) VALUES (:ID_NUITEE, :ID_RESERVATION, :JOUR)";
                 $statement = $this->db->prepare($sql);
                 $statement->execute([
@@ -113,50 +111,50 @@ class ReservationRepository {
         $passId = 0;
         $passDate = '';
         switch ($_POST['passSelection']) {
-            case 'pass1jour' :
+            case 'pass1jour':
                 $passId = 1;
                 if ($_POST['pass1jour'] == 'choixJour1') {
-                    $passDate = '2024-01-01';
+                    $passDate = '2024-07-01';
                 } elseif ($_POST['pass1jour'] == 'choixJour2') {
-                    $passDate = '2024-01-02';
+                    $passDate = '2024-07-02';
                 } elseif ($_POST['pass1jour'] == 'choixJour3') {
-                    $passDate = '2024-01-03';
+                    $passDate = '2024-07-03';
                 }
                 break;
-            case 'pass2jours' :
+            case 'pass2jours':
                 $passId = 2;
                 if ($_POST['pass2jours'] == 'choixJour12') {
-                    $passDate = '2024-01-01';
+                    $passDate = '2024-07-01';
                 } elseif ($_POST['pass2jours'] == 'choixJour23') {
-                    $passDate = '2024-01-02';
+                    $passDate = '2024-07-02';
                 }
                 break;
-            case 'pass3jours' :
+            case 'pass3jours':
                 $passId = 3;
-                $passDate = '2024-01-01';
+                $passDate = '2024-07-01';
                 break;
-            case 'pass1jourreduit' :
+            case 'pass1jourreduit':
                 $passId = 4;
                 if ($_POST['pass1jour'] == 'choixJour1') {
-                    $passDate = '2024-01-01';
+                    $passDate = '2024-07-01';
                 } elseif ($_POST['pass1jour'] == 'choixJour2') {
-                    $passDate = '2024-01-02';
+                    $passDate = '2024-07-02';
                 } elseif ($_POST['pass1jour'] == 'choixJour3') {
-                    $passDate = '2024-01-03';
+                    $passDate = '2024-07-03';
                 }
                 break;
-            case 'pass2joursreduit' :
+            case 'pass2joursreduit':
                 $passId = 5;
                 if ($_POST['pass2jours'] == 'choixJour12') {
-                    $passDate = '2024-01-01';
+                    $passDate = '2024-07-01';
                 } elseif ($_POST['pass2jours'] == 'choixJour23') {
-                    $passDate = '2024-01-02';
+                    $passDate = '2024-07-02';
                 }
                 break;
-            case 'pass3joursreduit' :
+            case 'pass3joursreduit':
                 $passId = 6;
                 if ($_POST['pass3jours'] == 'choixJour123') {
-                    $passDate = '2024-01-01';
+                    $passDate = '2024-07-01';
                 }
                 break;
         }
@@ -173,6 +171,23 @@ class ReservationRepository {
 
     public function getAll() {
         $sql = "SELECT * FROM " . PREFIXE . "reservations;";
-        return  $this->db->query($sql)->fetchAll(PDO::FETCH_CLASS, Reservation::class);
+        return  $this->db->query($sql)->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    public function getAllBasic() {
+        $sql = "SELECT vercors_reservations.ID, vercors_utilisateurs.NOM, vercors_utilisateurs.PRENOM, vercors_pass.NOM AS PASS_NAME, vercors_relation_reservation_pass.JOUR FROM `vercors_reservations`
+        JOIN vercors_utilisateurs ON vercors_reservations.ID_UTILISATEUR = vercors_utilisateurs.ID
+        JOIN vercors_relation_reservation_pass ON vercors_relation_reservation_pass.ID_RESERVATION = vercors_reservations.ID
+        JOIN vercors_pass ON vercors_relation_reservation_pass.ID_PASS = vercors_pass.ID
+        ";
+
+        return  $this->db->query($sql)->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    public function getById($id) {
+        $sql = "SELECT * FROM " . PREFIXE . "reservations WHERE ID = :id;";
+        $statement = $this->db->prepare($sql);
+        $statement->execute(['id' => $id]);
+        return $statement->fetch(PDO::FETCH_OBJ);
     }
 }
