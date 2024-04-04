@@ -1,12 +1,4 @@
 <div id="reservations-section">
-    <table>
-        <tr>
-            <th>Voir</th>
-            <th>Nom</th>
-            <th>Prenom</th>
-            <th>Date</th>
-            <th>Pass</th>
-        </tr>
         <?php
 
         use src\Repositories\ReservationRepository;
@@ -14,15 +6,14 @@
         $resaRepo = new ReservationRepository();
         foreach ($resaRepo->getAllBasic() as $reservation) {
             echo '
-                <tr>
-                    <td> <a href="reservation?id=' . $reservation->ID . '">🔎</a> </td>
-                    <td>' . $reservation->NOM . '</td>
-                    <td>' . $reservation->PRENOM . '</td>
-                    <td>' . $reservation->JOUR . '</td>
-                    <td>' . $reservation->PASS_NAME . '</td>
-                </tr>
+            <div class="reservation-item">
+            <div class="voir"><a href="reservation?id=' . $reservation->ID . '">🔎</a></div>
+            <div><strong>Nom:</strong> ' . $reservation->NOM . '</div>
+            <div><strong>Prénom:</strong> ' . $reservation->PRENOM . '</div>
+            <div><strong>Date:</strong> ' . $reservation->JOUR . '</div>
+            <div><strong>Pass:</strong> ' . $reservation->PASS_NAME . '</div>
+        </div>
         ';
         }
         ?>
-    </table>
 </div>
