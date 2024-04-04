@@ -215,54 +215,54 @@ function cocherTente3nuits() {
     let tenteNuit2Checked = document.getElementById('tenteNuit2').checked;
     let tenteNuit3Checked = document.getElementById('tenteNuit3').checked;
     let tente3NuitsButton = document.getElementById('tente3Nuits');
-  
+
     if (tenteNuit1Checked && tenteNuit2Checked && tenteNuit3Checked) {
-      // Si les trois premiers sont cochés, cochez le bouton "tente3Nuits" et décochez les trois premiers
-      tente3NuitsButton.checked = true;
-      document.getElementById('tenteNuit1').checked = false;
-      document.getElementById('tenteNuit2').checked = false;
-      document.getElementById('tenteNuit3').checked = false;
+        // Si les trois premiers sont cochés, cochez le bouton "tente3Nuits" et décochez les trois premiers
+        tente3NuitsButton.checked = true;
+        document.getElementById('tenteNuit1').checked = false;
+        document.getElementById('tenteNuit2').checked = false;
+        document.getElementById('tenteNuit3').checked = false;
     }
     //Si le bouton "tente3Nuits" est coché désactiver les options précédentes
     if (tente3NuitsButton.checked && (tenteNuit1.checked || tenteNuit2.checked || tenteNuit3.checked)) {
-      // Si c'est le cas, désélectionnez automatiquement les options précédentes
-      tenteNuit1.checked = false;
-      tenteNuit2.checked = false;
-      tenteNuit3.checked = false;
+        // Si c'est le cas, désélectionnez automatiquement les options précédentes
+        tenteNuit1.checked = false;
+        tenteNuit2.checked = false;
+        tenteNuit3.checked = false;
     }
-  }
+}
 
-  // Cocher automatiquement "VAN 3 NUITS" si les boutons des 3 nuits sont cochés
+// Cocher automatiquement "VAN 3 NUITS" si les boutons des 3 nuits sont cochés
 function cocherVan3nuits() {
     var vanNuit1Checked = document.getElementById('vanNuit1').checked;
     var vanNuit2Checked = document.getElementById('vanNuit2').checked;
     var vanNuit3Checked = document.getElementById('vanNuit3').checked;
     var van3NuitsButton = document.getElementById('van3Nuits');
-  
+
     if (vanNuit1Checked && vanNuit2Checked && vanNuit3Checked) {
-      // Si les trois premiers sont cochés, cochez le bouton "van3Nuits" et décochez les trois premiers
-      van3NuitsButton.checked = true;
-      document.getElementById('vanNuit1').checked = false;
-      document.getElementById('vanNuit2').checked = false;
-      document.getElementById('vanNuit3').checked = false;
+        // Si les trois premiers sont cochés, cochez le bouton "van3Nuits" et décochez les trois premiers
+        van3NuitsButton.checked = true;
+        document.getElementById('vanNuit1').checked = false;
+        document.getElementById('vanNuit2').checked = false;
+        document.getElementById('vanNuit3').checked = false;
     }
     //Si le bouton "van3Nuits" est coché désactiver les options précédentes
     if (van3NuitsButton.checked && (vanNuit1.checked || vanNuit2.checked || vanNuit3.checked)) {
-      // Si c'est le cas, désélectionnez automatiquement les options précédentes
-      vanNuit1.checked = false;
-      vanNuit2.checked = false;
-      vanNuit3.checked = false;
+        // Si c'est le cas, désélectionnez automatiquement les options précédentes
+        vanNuit1.checked = false;
+        vanNuit2.checked = false;
+        vanNuit3.checked = false;
     }
-  }
+}
 // Enfants
 enfantsCheckboxOui.onchange = () => {
     enfantsCheckboxOui.checked || enfantsCheckboxNon.checked
         ? (isEnfantsCheckboxValid = validateField(enfantsNonLabel, false))
         : (isEnfantsCheckboxValid = displayError(
-              enfantsNonLabel,
-              "Veuillez choisir une option pour les enfants.",
-              false
-          ));
+            enfantsNonLabel,
+            "Veuillez choisir une option pour les enfants.",
+            false
+        ));
     checkIfSection2IsValid();
 };
 
@@ -272,10 +272,10 @@ enfantsCheckboxNon.onchange = () => {
     enfantsCheckboxOui.checked || enfantsCheckboxNon.checked
         ? (isEnfantsCheckboxValid = validateField(enfantsNonLabel, false))
         : (isEnfantsCheckboxValid = displayError(
-              enfantsNonLabel,
-              "Veuillez choisir une option pour les enfants.",
-              false
-          ));
+            enfantsNonLabel,
+            "Veuillez choisir une option pour les enfants.",
+            false
+        ));
     checkIfSection2IsValid();
 };
 
@@ -332,6 +332,7 @@ const addressField = document.getElementById("adressePostale");
 const submitButton = document.getElementById("submitButton");
 const passwordField = document.getElementById("password");
 const checkPasswordField = document.getElementById("verifPassword");
+const RGPDCheckbox = document.getElementById("CGU");
 let islastNameValid = false;
 let isFirstNameValid = false;
 let isEmailValid = false;
@@ -339,9 +340,10 @@ let isPhoneValid = false;
 let isAddressValid = false;
 let isPasswordValid = false;
 let isCheckPasswordValid = false;
+let isRGPDchecked = false;
 
 function checkIfSection3IsValid() {
-    if (!islastNameValid || !isFirstNameValid || !isEmailValid || !isPhoneValid || !isAddressValid || !isPasswordValid) {
+    if (!islastNameValid || !isFirstNameValid || !isEmailValid || !isPhoneValid || !isAddressValid || !isPasswordValid || !isCheckPasswordValid || !isRGPDchecked) {
         submitButton.style.display = "none";
         if (!document.querySelector(".error-message-submit")) {
             let submitSectionPlaceholder = document.createElement("p");
@@ -395,10 +397,10 @@ emailField.onchange = () => {
     emailField.value = emailField.value.toLowerCase();
     // verify if email actually has a email format
     const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if (!regex.test(String(emailField.value)) 
-    || emailField.value.length < 3 
-    || emailField.value.length > 50 
-    || isStringInvalid(emailField.value)) {
+    if (!regex.test(String(emailField.value))
+        || emailField.value.length < 3
+        || emailField.value.length > 50
+        || isStringInvalid(emailField.value)) {
         errorMessage = "Veuillez renseigner une adresse email valide.";
         isEmailValid = displayError(emailField, errorMessage);
     } else {
@@ -411,7 +413,7 @@ phoneField.onchange = () => {
     phoneField.value = phoneField.value.replace(/[^0-9+]/g, "");
     phoneField.value = phoneField.value.trim();
     if (phoneField.value.length <= 12 && phoneField.value.length >= 10 && !isStringInvalid(phoneField.value)) {
-        const regex = /^[+](\d{3})\)?(\d{3})(\d{5,6})$|^(\d{10,10})$/; 
+        const regex = /^[+](\d{3})\)?(\d{3})(\d{5,6})$|^(\d{10,10})$/;
         if (regex.test(phoneField.value)) {
             isPhoneValid = validateField(phoneField);
         } else {
@@ -442,23 +444,35 @@ addressField.onchange = () => {
 }
 
 passwordField.onchange = () => {
-    passwordField.value = passwordField.value.trim();
     if (isStringInvalid(passwordField.value) || passwordField.value.length < 8 || passwordField.value.length > 50) {
         errorMessage = "Veuillez renseigner un mot de passe valide.";
         isPasswordValid = displayError(passwordField, errorMessage);
     } else {
         isPasswordValid = validateField(passwordField);
     }
-    if (passwordField.value === checkPasswordField.value) {
-        isCheckPasswordValid = validateField(confirmPasswordField);
-    } else {
-        errorMessage = "Le mot de passe n'est pas identique.";
-        isCheckPasswordValid = displayError(confirmPasswordField, errorMessage);
-    }
+    console.log(isPasswordValid);
     checkIfSection3IsValid();
 }
 
+checkPasswordField.onchange = () => {
+    if (passwordField.value === checkPasswordField.value) {
+        isCheckPasswordValid = validateField(checkPasswordField);
+    } else {
+        errorMessage = "Le mot de passe n'est pas identique.";
+        isCheckPasswordValid = displayError(checkPasswordField, errorMessage);
+    } 
+    console.log(isCheckPasswordValid);
+    checkIfSection3IsValid();
+}
 
+RGPDCheckbox.onchange = () => {
+    if (RGPDCheckbox.checked) {
+        isRGPDchecked = true;
+    } else {
+        isRGPDchecked = displayError(RGPDCheckbox, "Veuillez accepter les CGU.");
+    }
+    checkIfSection3IsValid();
+}
 
 checkIfSection3IsValid();
 //#endregion
@@ -470,11 +484,14 @@ function finalCheck(event) {
         && isEnfantsCheckboxValid
         && isNoiseReductionFieldValid
         && islastNameValid
-        && isFirstNameValid 
-        && isEmailValid 
+        && isFirstNameValid
+        && isEmailValid
         && isPhoneValid
         && isAddressValid
-        ) {
+        && isPasswordValid
+        && isCheckPasswordValid
+        && isRGPDchecked
+    ) {
         return true;
     } else {
         return false;
