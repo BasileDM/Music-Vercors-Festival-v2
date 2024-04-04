@@ -12,17 +12,32 @@
         use src\Repositories\ReservationRepository;
 
         $resaRepo = new ReservationRepository();
-        foreach ($resaRepo->getAllBasic() as $reservation) {
-            echo '
-                <tr>
-                    <td> <a href="reservation?id=' . $reservation->ID . '">🔎</a> </td>
-                    <td>' . $reservation->NOM . '</td>
-                    <td>' . $reservation->PRENOM . '</td>
-                    <td>' . $reservation->JOUR . '</td>
-                    <td>' . $reservation->PASS_NAME . '</td>
-                </tr>
-        ';
+        if ($_SESSION['role'] === 'admin') {
+            foreach ($resaRepo->getAllBasic() as $reservation) {
+                echo '
+                    <tr>
+                        <td> <a href="reservation?id=' . $reservation->ID . '">🔎</a> </td>
+                        <td>' . $reservation->NOM . '</td>
+                        <td>' . $reservation->PRENOM . '</td>
+                        <td>' . $reservation->JOUR . '</td>
+                        <td>' . $reservation->PASS_NAME . '</td>
+                    </tr>
+            ';
+            }
+        } else {
+            foreach ($resaRepo->getAllBasicById($_SESSION['userId']) as $reservation) {
+                echo '
+                    <tr>
+                        <td> <a href="reservation?id=' . $reservation->ID . '">🔎</a> </td>
+                        <td>' . $reservation->NOM . '</td>
+                        <td>' . $reservation->PRENOM . '</td>
+                        <td>' . $reservation->JOUR . '</td>
+                        <td>' . $reservation->PASS_NAME . '</td>
+                    </tr>
+            ';
+            }
         }
+        
         ?>
     </table>
 </div>

@@ -184,6 +184,19 @@ class ReservationRepository {
         return  $this->db->query($sql)->fetchAll(PDO::FETCH_OBJ);
     }
 
+    public function getAllBasicById($userId) {
+        $sql = "SELECT vercors_reservations.ID, vercors_utilisateurs.NOM, vercors_utilisateurs.PRENOM, vercors_pass.NOM AS PASS_NAME, vercors_relation_reservation_pass.JOUR FROM `vercors_reservations`
+        JOIN vercors_utilisateurs ON vercors_reservations.ID_UTILISATEUR = vercors_utilisateurs.ID
+        JOIN vercors_relation_reservation_pass ON vercors_relation_reservation_pass.ID_RESERVATION = vercors_reservations.ID
+        JOIN vercors_pass ON vercors_relation_reservation_pass.ID_PASS = vercors_pass.ID
+        WHERE vercors_utilisateurs.ID = :userId";
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
+
     public function getById($id) {
         $sql = "SELECT * FROM " . PREFIXE . "reservations WHERE ID = :id;";
         $statement = $this->db->prepare($sql);
