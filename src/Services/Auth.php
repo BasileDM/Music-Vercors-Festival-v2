@@ -14,13 +14,8 @@ final class Auth {
   }
 
   public static function login($pass, $mail) {
-    var_dump($_SESSION);
-    var_dump($pass, $mail);
     $userRepo = new UserRepository();
     $user = $userRepo->getByMail($mail);
-    var_dump($user);
-    var_dump(password_verify($pass, $user->PASSWORD));
-    die();
     
     if ($user && password_verify($pass, $user->PASSWORD)) {
       $_SESSION['connected'] = true;
@@ -35,7 +30,6 @@ final class Auth {
   }
 
   public static function logout() {
-    var_dump($_SESSION);
     $_SESSION['connected'] = false;
     session_destroy();
     header('Location: ' . HOME_URL);
