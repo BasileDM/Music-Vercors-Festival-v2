@@ -9,7 +9,7 @@
             foreach ($resaRepo->getAllBasic() as $reservation) {
                 echo '
                     <div class="reservation-item">
-            <div class="voir"><a href="reservation?id=' . $reservation->ID . '">🔎</a></div>
+            <div class="voir"><a title="Voir détails" href="reservation?id=' . $reservation->ID . '">🔎</a><a title="Supprimer la réservation" href="delete?id=' . $reservation->ID . '">❌</a></div>
             <div><strong>Nom:</strong> ' . $reservation->NOM . '</div>
             <div><strong>Prénom:</strong> ' . $reservation->PRENOM . '</div>
             <div><strong>Date:</strong> ' . $reservation->JOUR . '</div>

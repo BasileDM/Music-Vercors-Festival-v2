@@ -255,4 +255,16 @@ class ReservationRepository {
         $statement->execute(['id' => $id]);
         return $statement->fetch(PDO::FETCH_OBJ);
     }
+
+    public function deleteById($id) {
+        $sql = "
+        DELETE FROM " . PREFIXE . "relation_reservation_pass WHERE ID_RESERVATION = :id;
+        DELETE FROM " . PREFIXE . "relation_reservation_extras WHERE ID_RESERVATION = :id;
+        DELETE FROM " . PREFIXE . "relation_reservation_nuitee WHERE ID_RESERVATION = :id;
+        DELETE FROM " . PREFIXE . "reservations WHERE ID = :id;
+        ";
+        $statement = $this->db->prepare($sql);
+        $statement->execute(['id' => $id]);
+        return 'success';
+    }
 }
