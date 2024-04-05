@@ -11,6 +11,20 @@ final class Database {
         $this->connect();
     }
 
+    public function getDb() {
+        return $this->db;
+    }
+    public function setDb($db) {
+        $this->db = $db;
+    }
+
+    public function getConfig() {
+        return $this->config;
+    }
+    public function setConfig($config) {
+        $this->config = $config;
+    }
+
     public function connect() {
         try {
             $dsn = "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME;
@@ -21,25 +35,26 @@ final class Database {
         }
     }
 
-    public function init(){
-        if($this->doesUserTableExists()){
-            $this->updateConfig();
+    public function init() {
+        if ($this->doesUserTableExists()) {
             return "Database already exists.";
-        }
-        try {
-            $sql = file_get_contents(__DIR__ . "/../Migrations/Vercors-database.sql");
-            $this->db->query($sql);
-            if ($this->updateConfig()){
-                return true;
-            } else {
-                return false;
+            die();
+        } else {
+            try {
+                $sql = file_get_contents(__DIR__ . "/../Migrations/Vercors-database.sql");
+                $this->db->query($sql);
+                if ($this->updateConfig()) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } catch (\PDOException $error) {
+                return $error->getMessage();
             }
-        } catch (\PDOException $error) {
-            return $error->getMessage();
         }
     }
 
-    public function updateConfig(){
+    public function updateConfig() {
         $configFile = fopen($this->config, "w");
         $content = "<?php
 
@@ -52,7 +67,7 @@ final class Database {
         define('HOME_URL', '/');
         
         define('DB_INITIALIZED', TRUE);";
-    
+
         if (fwrite($configFile, $content)) {
             fclose($configFile);
             return true;
@@ -61,14 +76,13 @@ final class Database {
         }
     }
 
-    public function doesUserTableExists(){
-        $sql = "SHOW TABLES LIKE '" . PREFIXE ."utilisateurs'";
+    public function doesUserTableExists() {
+        $sql = "SHOW TABLES LIKE '" . PREFIXE . "utilisateurs';";
         $return = $this->db->query($sql)->fetch();
-        if ($return && $return[0] == PREFIXE."utilisateurs") {
+        if ($return && $return[0] == PREFIXE . "utilisateurs") {
             return true;
         } else {
             return false;
         }
     }
-
 }
