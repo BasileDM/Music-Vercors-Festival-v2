@@ -35,7 +35,9 @@ final class ReservationController {
 
       // WIP
       if ($existingUser) {
-        $newUserId = $existingUser->getId();
+        var_dump($existingUser);
+        $newUserId = $existingUser->ID;
+        var_dump($newUserId);
       } else {
         $newUserId = $userRepo->create($newUser);
         $newUser->setId($newUserId);
@@ -63,7 +65,6 @@ final class ReservationController {
 
     if (!isset($_SESSION['connected']) || !$_SESSION['connected']) {
 
-      echo 'Session is not set. Fetching ID by mail.';
       if ($this->registerUser() == 'success') {
         $userRepo = new UserRepository();
         $user = $userRepo->getByMail($_POST['email']);

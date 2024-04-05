@@ -93,26 +93,26 @@ if (isset($_SESSION['connected']) && $_SESSION['connected'] === true) {
       <br>
       <h3>Réserver un emplacement de tente : </h3>
       <div><input type="checkbox" id="tenteNuit1" name="emplacementTente[]" value="choixNuit1" onchange="cocherTente3nuits()">
-      <label for="tenteNuit1">Pour la nuit du 01/07 (5€)</label>
-      <div><input type="checkbox" id="tenteNuit2" name="emplacementTente[]" value="choixNuit2" onchange="cocherTente3nuits()">
-      <label for="tenteNuit2">Pour la nuit du 02/07 (5€)</label>
-      </div>
-      <div><input type="checkbox" id="tenteNuit3" name="emplacementTente[]" value="choixNuit3" onchange="cocherTente3nuits()">
-      <label for="tenteNuit3">Pour la nuit du 03/07 (5€)</label>
-      </div>
-      <br>
-      <div><input type="checkbox" id="tente3Nuits" name="emplacementTente[]" value="choix3Nuits" onchange="cocherTente3nuits()">
-      <label for="tente3Nuits">Pour les 3 nuits (12€)</label>
-      </div>
-      <h3>Réserver un emplacement de camion aménagé : </h3>
-      <div><input type="checkbox" id="vanNuit1" name="emplacementVan[]" value="choixVanNuit1" onchange="cocherVan3nuits()">
-      <label for="vanNuit1">Pour la nuit du 01/07 (5€)</label>
-      </div>
-      <div><input type="checkbox" id="vanNuit2" name="emplacementVan[]" value="choixVanNuit2" onchange="cocherVan3nuits()">
-      <label for="vanNuit2">Pour la nuit du 02/07 (5€)</label>
-      </div>
-      <div></div><input type="checkbox" id="vanNuit3" name="emplacementVan[]" value="choixVanNuit3" onchange="cocherVan3nuits()">
-      <label for="vanNuit3">Pour la nuit du 03/07 (5€)</label>
+        <label for="tenteNuit1">Pour la nuit du 01/07 (5€)</label>
+        <div><input type="checkbox" id="tenteNuit2" name="emplacementTente[]" value="choixNuit2" onchange="cocherTente3nuits()">
+          <label for="tenteNuit2">Pour la nuit du 02/07 (5€)</label>
+        </div>
+        <div><input type="checkbox" id="tenteNuit3" name="emplacementTente[]" value="choixNuit3" onchange="cocherTente3nuits()">
+          <label for="tenteNuit3">Pour la nuit du 03/07 (5€)</label>
+        </div>
+        <br>
+        <div><input type="checkbox" id="tente3Nuits" name="emplacementTente[]" value="choix3Nuits" onchange="cocherTente3nuits()">
+          <label for="tente3Nuits">Pour les 3 nuits (12€)</label>
+        </div>
+        <h3>Réserver un emplacement de camion aménagé : </h3>
+        <div><input type="checkbox" id="vanNuit1" name="emplacementVan[]" value="choixVanNuit1" onchange="cocherVan3nuits()">
+          <label for="vanNuit1">Pour la nuit du 01/07 (5€)</label>
+        </div>
+        <div><input type="checkbox" id="vanNuit2" name="emplacementVan[]" value="choixVanNuit2" onchange="cocherVan3nuits()">
+          <label for="vanNuit2">Pour la nuit du 02/07 (5€)</label>
+        </div>
+        <div></div><input type="checkbox" id="vanNuit3" name="emplacementVan[]" value="choixVanNuit3" onchange="cocherVan3nuits()">
+        <label for="vanNuit3">Pour la nuit du 03/07 (5€)</label>
       </div>
       <br>
       <div></div><input type="checkbox" id="van3Nuits" name="emplacementVan[]" value="choixVan3Nuits" onchange="cocherVan3nuits()">
@@ -143,29 +143,32 @@ if (isset($_SESSION['connected']) && $_SESSION['connected'] === true) {
       <legend>Coordonnées</legend>
       <br>
       <label for="nom">Nom* :</label>
-      <input type="text" name="nom" id="nom" <?php if (isset($_SESSION['connected']) && $_SESSION['connected'] === true) { ?> value="<?= $user->NOM; ?>" <?php } ?> required>
+      <input type="text" name="nom" id="nom" <?php if (isset($_SESSION['connected']) && $_SESSION['connected'] === true) { ?> value="<?= $user->NOM; ?>" disabled <?php } ?> required>
       <label for="prenom">Prénom* :</label>
-      <input type="text" name="prenom" id="prenom" <?php if (isset($_SESSION['connected']) && $_SESSION['connected'] === true) { ?> value="<?= $user->PRENOM; ?>" <?php } ?> required>
+      <input type="text" name="prenom" id="prenom" <?php if (isset($_SESSION['connected']) && $_SESSION['connected'] === true) { ?> value="<?= $user->PRENOM; ?>" disabled <?php } ?> required>
       <label for="email">Email* :</label>
-      <input type="email" name="email" id="email" <?php if (isset($_SESSION['connected']) && $_SESSION['connected'] === true) { ?> value="<?= $user->MAIL; ?>" <?php } ?> required>
+      <input type="email" name="email" id="email" <?php if (isset($_SESSION['connected']) && $_SESSION['connected'] === true) { ?> value="<?= $user->MAIL; ?>" disabled <?php } ?> required>
       <?php if (isset($errorCode) && $errorCode === 4) { ?>
         <div class="messageError">Saisir l'adresse mail.</div>
       <?php } ?>
       <label for="telephone">Téléphone* :</label>
-      <input type="text" name="telephone" id="telephone" <?php if (isset($_SESSION['connected']) && $_SESSION['connected'] === true) { ?> value="<?= $user->TELEPHONE; ?>" <?php } ?> required>
+      <input type="text" name="telephone" id="telephone" <?php if (isset($_SESSION['connected']) && $_SESSION['connected'] === true) { ?> value="<?= $user->TELEPHONE; ?>" disabled <?php } ?> required>
       <?php if (isset($errorCode) && $errorCode === 5) { ?>
         <div class="messageError">.</div>
       <?php } ?>
       <label for="adressePostale">Adresse Postale* :</label>
-      <input type="text" name="adressePostale" id="adressePostale" <?php if (isset($_SESSION['connected']) && $_SESSION['connected'] === true) { ?> value="<?= $user->ADRESSE; ?>" <?php } ?> required>
+      <input type="text" name="adressePostale" id="adressePostale" <?php if (isset($_SESSION['connected']) && $_SESSION['connected'] === true) { ?> value="<?= $user->ADRESSE; ?>" disabled <?php } ?> required>
       <?php if (isset($errorCode) && $errorCode === 6) { ?>
         <div class="messageError">Ajouter adresse postale.</div>
       <?php } ?>
-      <label for="password">Mot de passe* :</label>
-      <input type="password" id="password" name="password" required>
-      <label for="password">Vérifier votre mot de passe* :</label>
-      <input type="password" id="verifPassword" name="password" required>
-      <label for="CGU">J'accepte les conditions générales d'utilisation* <input id="CGU" name="CGU" type="checkbox"></label>
+      <?php if (!isset($_SESSION['connected']) || $_SESSION['connected'] === false) { ?>
+        <label for="password">Mot de passe* :</label>
+        <input type="password" id="password" name="password" required>
+
+        <label for="password">Vérifier votre mot de passe* :</label>
+        <input type="password" id="verifPassword" name="password" required>
+        <label for="CGU">J'accepte les conditions générales d'utilisation* <input id="CGU" name="CGU" type="checkbox"></label>
+      <?php } ?>
       <input type="submit" name="soumission" class="bouton" value="Réserver" id="submitButton">
     </fieldset>
   </form>
