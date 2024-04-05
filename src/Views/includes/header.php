@@ -30,7 +30,7 @@
             </div>
         <?php } else { ?>
             <div id='connexion' class="bouton">
-                <a href="/login">Connexion</a>
+                <a href="./login">Connexion</a>
             </div>
         <?php } ?>
     </header>
