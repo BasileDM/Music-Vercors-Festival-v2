@@ -33,11 +33,8 @@ final class ReservationController {
       $userRepo = new UserRepository();
       $existingUser = $userRepo->getByMail($newUser->getEmail());
 
-      // WIP
       if ($existingUser) {
-        var_dump($existingUser);
         $newUserId = $existingUser->ID;
-        var_dump($newUserId);
       } else {
         $newUserId = $userRepo->create($newUser);
         $newUser->setId($newUserId);
@@ -179,5 +176,12 @@ final class ReservationController {
       var_dump($test); 
       die();
     }
+  }
+
+  public function deleteById() {
+    $resaRepo = new ReservationRepository();
+    $resaRepo->deleteById($_GET['id']);
+    header('Location: ' . HOME_URL . 'dashboard?section=reservations');
+    die();
   }
 }

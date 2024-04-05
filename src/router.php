@@ -63,6 +63,15 @@ switch ($route) {
         }
         break;
 
+        case HOME_URL . 'delete':
+        if (!Auth::isAuth()) {
+            header('Location: ' . HOME_URL . 'login');
+            die();
+        } elseif ($_SESSION['role'] == 'admin') {
+            $ReservationController->deleteById($_GET['id']);
+        }
+        break;
+
     default:
         $homeController->notFound();
         break;
