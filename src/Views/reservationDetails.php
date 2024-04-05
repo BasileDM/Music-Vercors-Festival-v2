@@ -4,10 +4,9 @@ include __DIR__ . '/includes/header.php';
 
 <div id="dashboard-container">
   <?php
-  include __DIR__ . '/includes/colonne.php';
 
-use src\Repositories\NuiteeRepository;
-use src\Repositories\ReservationRepository;
+  use src\Repositories\NuiteeRepository;
+  use src\Repositories\ReservationRepository;
 
   $resaRepo = new ReservationRepository();
   $nuiteeRepo = new NuiteeRepository();
@@ -25,7 +24,7 @@ use src\Repositories\ReservationRepository;
       echo '<tr><td>' . $key . '</td><td>' . $value . '</td><td></td></tr>';
     }
     foreach ($resaNuitees as $nuitees) {
-      echo '<tr><td>Nuitées</td><td>' . $nuitees->NOM . '</td><td>'.$nuitees->JOUR.'</td></tr>';
+      echo '<tr><td>Nuitées</td><td>' . $nuitees->NOM . '</td><td>' . $nuitees->JOUR . '</td></tr>';
     }
     echo '</div>';
     echo '</table>';

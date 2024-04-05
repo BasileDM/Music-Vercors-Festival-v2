@@ -24,25 +24,25 @@ final class ReservationController {
       $newUser->setRole('user');
       $newUser->setEmail(htmlspecialchars($_POST['email']));
       $newUser->setPassword($_POST['password']);
-      
-      
+
+
       $date = new DateTime();
       $date = $date->setTimezone(new DateTimeZone('Europe/Paris'));
       $newUser->setRGPD($date);
-      
+
       $userRepo = new UserRepository();
       $existingUser = $userRepo->getByMail($newUser->getEmail());
 
       // WIP
       if ($existingUser) {
-        $newUserId = $existingUser->getId();
-        
+        var_dump($existingUser);
+        $newUserId = $existingUser->ID;
+        var_dump($newUserId);
       } else {
         $newUserId = $userRepo->create($newUser);
         $newUser->setId($newUserId);
       }
       return 'success';
-
     } catch (\Exception $e) {
       echo $e->getMessage();
       die();
@@ -64,8 +64,7 @@ final class ReservationController {
     $newReservation->setLuges($_POST['NombreLugesEte']);
 
     if (!isset($_SESSION['connected']) || !$_SESSION['connected']) {
-      
-      echo 'Session is not set. Fetching ID by mail.';
+
       if ($this->registerUser() == 'success') {
         $userRepo = new UserRepository();
         $user = $userRepo->getByMail($_POST['email']);
@@ -76,7 +75,8 @@ final class ReservationController {
     }
     $resaRepo = new ReservationRepository();
     $newReservationID = $resaRepo->create($newReservation);
-    header('Location: '.HOME_URL.'receipt?id='.$newReservationID);
+    $this->sendMail($_POST['email']);
+    header('Location: ' . HOME_URL . 'receipt?id=' . $newReservationID);
   }
 
   public function calculateTotalPrice() {
@@ -161,5 +161,23 @@ final class ReservationController {
 
   public function seeDetails() {
     $this->render('reservationDetails');
+  }
+
+  public function sendMail($mail) {
+    $to      = $mail . ", tom.delorme.simplon@gmail.com";
+    $subject = 'Confirmation de réservation';
+    $message = 'Merci de votre réservation !';
+    $headers = 'From: laura.carraro.simplon@gmail.com' . "\r\n" .
+      'Reply-To: laura.carraro.simplon@gmail.com' . "\r\n" .
+      'X-Mailer: PHP/' . phpversion();
+
+    $test = mail($to, $subject, $message, $headers);
+
+    if ($test) {
+      echo "le mail a bien été envoyé.";
+    } else {
+      var_dump($test); 
+      die();
+    }
   }
 }

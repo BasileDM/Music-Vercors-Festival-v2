@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vercors Music Festival</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="stylesheet" href="./assets/css/style.css">
     <?php if (isset($_SESSION['connected']) && $_SESSION['connected'] === true) { ?>
         <link rel="stylesheet" href="./assets/css/dashboard.css">
